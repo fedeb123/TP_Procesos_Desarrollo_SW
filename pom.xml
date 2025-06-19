@@ -5,17 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.uade.tpo</groupId>
-<<<<<<< HEAD
   <artifactId>TP_Procesos_Desarrollo_SW</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>TP Procesos de Desarrollo SW</name>
-=======
-  <artifactId>tpo-uno-mas</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-  <name>tpo-uno-mas</name>
->>>>>>> origin/develop
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
