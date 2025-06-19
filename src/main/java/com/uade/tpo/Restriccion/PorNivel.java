@@ -1,9 +1,11 @@
 package com.uade.tpo.Restriccion;
 
-public class RestriccionPorNivel implements IRestriccion {
+import com.uade.tpo.Enums;
+
+public class PorNivel implements IRestriccion {
     private Enums.TipoNivelDeJuego nivelRequerido;
 
-    public RestriccionPorNivel(Enums.TipoNivelDeJuego nivelRequerido) {
+    public PorNivel(Enums.TipoNivelDeJuego nivelRequerido) {
         this.nivelRequerido = nivelRequerido;
     }
 

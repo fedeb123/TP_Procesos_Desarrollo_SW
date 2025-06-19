@@ -1,9 +1,9 @@
 package com.uade.tpo.Restriccion;
 
-public class RestriccionPorCercania implements IRestriccion {
+public class PorCercania implements IRestriccion {
     private int radioKm;
 
-    public RestriccionPorCercania(int radioKm) {
+    public PorCercania(int radioKm) {
         this.radioKm = radioKm;
     }
 

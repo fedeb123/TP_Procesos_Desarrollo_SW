@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tpo-uno-mas" />
+        <module name="TP_Procesos_Desarrollo_SW" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tpo-uno-mas" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
