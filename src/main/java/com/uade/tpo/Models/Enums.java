@@ -1,9 +1,9 @@
-package com.uade.tpo;
+package com.uade.tpo.Models;
 
 public class Enums {
 
     public enum TipoEstadoPartido {
-        NECESITAMOS_JUGADORES,
+        NECESITA_JUGADORES,
         PARTIDO_ARMADO,
         CONFIRMADO,
         EN_JUEGO,
@@ -17,23 +17,10 @@ public class Enums {
         AVANZADO
     }
 
-    public enum TipoNiveles {
-        PRINCIPIANTE,
-        INTERMEDIO,
-        AVANZADO
-    }
-
-    public enum TipoDeportes {
-        FUTBOL,
-        HOCKEY,
-        HANDBALL,
-        BASQUET
-    }
-
     public enum TipoDeporte {
         FUTBOL,
-        HANDBALL,
         HOCKEY,
+        HANDBALL,
         BASQUET
     }
 }
