@@ -8,7 +8,7 @@ import com.uade.tpo.storage.FakeSQL;
 import com.uade.tpo.storage.IStorage;
 
 public class StorageAdapter implements IStorage {
-    private final FakeSQL sql;
+    private final FakeSQL sql ;
 
     public StorageAdapter(FakeSQL sql) {
         this.sql = sql;
