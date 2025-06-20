@@ -7,6 +7,7 @@ import com.uade.tpo.Models.Zona;
 import com.uade.tpo.storage.fake.FakeSQL;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StorageAdapter implements IStorage {
     private final FakeSQL sql ;
@@ -17,23 +18,21 @@ public class StorageAdapter implements IStorage {
 
     @Override
     public void crearUsuario(Usuario usuario) {
-        this.sql.execute("");
+        this.sql.agregarUsuario(usuario);
     }
 
     @Override
     public void guardarPartido(Partido partido) {
-        this.sql.execute("");
+        this.sql.agregarPartido(partido);
     }
 
     @Override
-    public void buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte) {
-        this.sql.execute("");
+    public List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte) {
+       return this.sql.buscarPartidos(zona, tipoDeporte);
     }
 
     @Override
     public ArrayList<Usuario> getUsuarios(){
-        this.sql.execute("");
-
-        return new ArrayList<>();
+        return this.sql.buscarUsuarios();
     }
 }

@@ -1,7 +1,20 @@
 package com.uade.tpo.storage.fake;
 
+import com.uade.tpo.Models.Enums;
+import com.uade.tpo.Models.Partido;
+import com.uade.tpo.Models.Usuario;
+import com.uade.tpo.Models.Zona;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class FakeSQL {
     private static final FakeSQL instance = new FakeSQL();
+
+    private final Map<String, Usuario> usuarios = new HashMap<>();
+    private final ArrayList<Partido> partidos = new ArrayList<>();
 
     private FakeSQL() {}
 
@@ -9,8 +22,27 @@ public class FakeSQL {
         return instance;
     }
 
-    public void execute(String sql) {
-        System.out.println("tp aprobado 10/10");
+    public void agregarUsuario(Usuario usuario) {
+        usuarios.put(usuario.getCorreo(), usuario);
+    }
+
+    public Usuario buscarUsuario(String correo) {
+        return usuarios.get(correo);
+    }
+
+    public ArrayList<Usuario> buscarUsuarios() {
+        return new ArrayList<>(usuarios.values());
+    }
+
+
+    public void agregarPartido(Partido partido) {
+        partidos.add(partido);
+    }
+
+    public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
+        return partidos.stream()
+                .filter(p -> p.getUbicacion().equals(zona) && p.getTipoDeporte() == tipoDeporte)
+                .toList();
     }
 }
 
