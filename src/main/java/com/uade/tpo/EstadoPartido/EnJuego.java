@@ -21,6 +21,8 @@ public class EnJuego implements IEstadoPartido {
     public void finalizar(Partido partido) {
         partido.setEstado(new Finalizado());
 
+        partido.notificarObservadores("Partido finalizado");
+
         for (Usuario u : partido.getJugadores()) {
             partido.eliminarObservador(u);
         }

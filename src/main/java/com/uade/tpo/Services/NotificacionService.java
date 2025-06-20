@@ -25,10 +25,10 @@ public class NotificacionService {
 
     }
 
-    public void notificarATodos(List<Usuario> usuarios, String mensaje) {
-        for (Usuario u : usuarios) {
-            this.pushAdapter.notificar(u, mensaje);
-            this.emailAdapter.notificar(u, mensaje);
+    public void notificarATodos(List<Observer> observers, String mensaje) {
+        for (Observer o : observers) {
+            this.pushAdapter.notificar(o, mensaje);
+            this.emailAdapter.notificar(o, mensaje);
         }
     }
 }

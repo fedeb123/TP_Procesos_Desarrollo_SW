@@ -22,6 +22,9 @@ public class NecesitaJugadores implements IEstadoPartido {
 
         if (partido.getJugadores().size() == partido.getCantidadJugadoresRequerida()) {
             partido.setEstado(new Armado());
+
+            partido.notificarObservadores("Partido armado");
+
             System.out.println("Partido armado automáticamente.");
         }
     }
@@ -34,6 +37,8 @@ public class NecesitaJugadores implements IEstadoPartido {
     @Override
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
+
+        partido.notificarObservadores("Partido cancelado");
 
         for (Usuario u : partido.getJugadores()) {
             partido.eliminarObservador(u);

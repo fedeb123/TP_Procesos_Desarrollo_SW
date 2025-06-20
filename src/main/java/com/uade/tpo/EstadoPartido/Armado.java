@@ -10,6 +10,9 @@ public class Armado implements IEstadoPartido {
     @Override
     public void iniciarPartido(Partido partido) {
         partido.setEstado(new Confirmado());
+
+        partido.notificarObservadores("Partido confirmado");
+
         System.out.println("Confirmando partido");
     }
 
@@ -26,6 +29,8 @@ public class Armado implements IEstadoPartido {
     @Override
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
+
+        partido.notificarObservadores("Partido cancelado");
 
         for (Usuario u: partido.getJugadores()){
             partido.eliminarObservador(u);

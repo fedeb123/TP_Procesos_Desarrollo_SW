@@ -10,6 +10,10 @@ public class Confirmado implements IEstadoPartido {
     @Override
     public void iniciarPartido(Partido partido) {
         partido.setEstado(new EnJuego());
+
+        partido.notificarObservadores("Partido en juego");
+
+
         System.out.println("El partido ha comenzado.");
     }
 
@@ -26,6 +30,8 @@ public class Confirmado implements IEstadoPartido {
     @Override
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
+
+        partido.notificarObservadores("Partido cancelado");
 
         for (Usuario u: partido.getJugadores()){
             partido.eliminarObservador(u);

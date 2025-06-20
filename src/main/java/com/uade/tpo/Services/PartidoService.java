@@ -49,6 +49,7 @@ public class PartidoService {
         var usuarios = this.usuarioService.getUsuarios();
 
         List<Observer> notificarUsuarios = new ArrayList<>();
+
         for (Usuario u : usuarios) {
             if (u.getDeporteFav() == partido.getTipoDeporte()) {
                 notificarUsuarios.add(u);
