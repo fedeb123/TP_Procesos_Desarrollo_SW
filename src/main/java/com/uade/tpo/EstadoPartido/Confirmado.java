@@ -2,27 +2,28 @@ package com.uade.tpo.EstadoPartido;
 
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
+import com.uade.tpo.Services.INotificacionService;
 
 public class Confirmado implements IEstadoPartido {
 
     @Override
-    public void iniciarPartido(Partido partido) {
+    public void iniciarPartido(Partido partido, INotificacionService notificacionService) {
         partido.setEstado(new EnJuego());
         System.out.println("El partido ha comenzado.");
     }
 
     @Override
-    public void agregarJugador(Partido partido, Usuario jugador) {
+    public void agregarJugador(Partido partido, Usuario jugador, INotificacionService notificacionService) {
         System.out.println("El partido ya fue confirmado. No se pueden agregar jugadores.");
     }
 
     @Override
-    public void finalizar(Partido partido) {
+    public void finalizar(Partido partido, INotificacionService notificacionService) {
         System.out.println("El partido aún no comenzó. No se puede finalizar.");
     }
 
     @Override
-    public void cancelar(Partido partido) {
+    public void cancelar(Partido partido, INotificacionService notificacionService) {
         partido.setEstado(new Cancelado());
 
         for (Usuario u: partido.getJugadores()){

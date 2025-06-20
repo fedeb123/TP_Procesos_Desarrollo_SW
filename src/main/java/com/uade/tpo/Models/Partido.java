@@ -5,6 +5,7 @@ import com.uade.tpo.EstadoPartido.IEstadoPartido;
 import com.uade.tpo.EstadoPartido.NecesitaJugadores;
 import com.uade.tpo.Observer.Observable;
 import com.uade.tpo.Restriccion.IRestriccion;
+import com.uade.tpo.Services.INotificacionService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,8 +44,24 @@ public class Partido extends Observable {
         this.estado = new NecesitaJugadores();
     }
 
-    void agregarJugador(Usuario usuario) {
-        this.estado.agregarJugador(this, usuario);
+    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
+                   String direccion, Usuario organizadorPartido,
+                   ArrayList<IRestriccion> restricciones,
+                   IEmparejamiento metodoEmparejamiento) {
+
+        this.jugadores = new ArrayList<>();
+        this.restricciones = restricciones;
+        this.tipoDeporte = tipoDeporte;
+        this.ubicacion = ubicacion;
+        this.horario = horario;
+        this.direccion = direccion;
+        this.organizadorPartido = organizadorPartido;
+        this.metodoEmparejamiento = metodoEmparejamiento;
+        this.estado = new NecesitaJugadores();
+    }
+
+    public void agregarJugador(Usuario usuario, INotificacionService notificacionService) {
+        this.estado.agregarJugador(this, usuario, notificacionService);
     }
 
     public void iniciar() {

@@ -19,5 +19,10 @@ public class Observable {
             o.notificar(mensaje);
         }
     }
+
+    public List<Observer> getObservadores() {
+        return observers;
+    }
 }
+
 

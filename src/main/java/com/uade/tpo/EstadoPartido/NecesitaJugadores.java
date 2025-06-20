@@ -3,38 +3,39 @@ package com.uade.tpo.EstadoPartido;
 import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Partido;
+import com.uade.tpo.Services.INotificacionService;
 
 public class NecesitaJugadores implements IEstadoPartido {
 
     @Override
-    public void iniciarPartido(Partido partido) {
+    public void iniciarPartido(Partido partido, INotificacionService notificacionService) {
         // No se puede iniciar aún, faltan jugadores
         System.out.println("No se puede iniciar el partido, aún faltan jugadores.");
     }
 
     @Override
-    public void agregarJugador(Partido partido, Usuario usuario) {
+    public void agregarJugador(Partido partido, Usuario usuario, INotificacionService notificacionService) {
         partido.getJugadores().add(usuario);
         partido.agregarObservador(usuario);
 
         System.out.printf("%s agregado al partido %n ", usuario.getNombre());
 
-        if (partido.getJugadores().size() == partido.getCantidadJugadoresRequerida()){
+        if (partido.getJugadores().size() == partido.getCantidadJugadoresRequerida()) {
             partido.setEstado(new Armado());
             System.out.println("Partido armado automáticamente.");
         }
     }
 
     @Override
-    public void finalizar(Partido partido) {
+    public void finalizar(Partido partido, INotificacionService notificacionService) {
         System.out.println("No se puede finalizar el partido. Todavía no comenzó.");
     }
 
     @Override
-    public void cancelar(Partido partido) {
+    public void cancelar(Partido partido, INotificacionService notificacionService) {
         partido.setEstado(new Cancelado());
 
-        for (Usuario u: partido.getJugadores()){
+        for (Usuario u : partido.getJugadores()) {
             partido.eliminarObservador(u);
         }
 
