@@ -2,6 +2,7 @@ package com.uade.tpo.Restriccion;
 
 import com.uade.tpo.Models.Enums;
 
+
 public class PorNivel implements IRestriccion {
     private Enums.TipoNivelDeJuego nivelRequerido;
 
