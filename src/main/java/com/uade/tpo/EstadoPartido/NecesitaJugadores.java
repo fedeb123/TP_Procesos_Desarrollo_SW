@@ -14,7 +14,11 @@ public class NecesitaJugadores implements IEstadoPartido {
 
     @Override
     public void agregarJugador(Partido partido, Usuario usuario) {
-        partido.agregarJugador(usuario);
+        partido.getJugadores().add(usuario);
+        partido.agregarObservador(usuario);
+
+        System.out.printf("%s agregado al partido %n ", usuario.getNombre());
+
         if (partido.getJugadores().size() == partido.getCantidadJugadoresRequerida()){
             partido.setEstado(new Armado());
             System.out.println("Partido armado automáticamente.");
@@ -29,6 +33,11 @@ public class NecesitaJugadores implements IEstadoPartido {
     @Override
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
+
+        for (Usuario u: partido.getJugadores()){
+            partido.eliminarObservador(u);
+        }
+
         System.out.println("Partido cancelado.");
     }
 

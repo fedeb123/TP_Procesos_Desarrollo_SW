@@ -2,12 +2,13 @@ package com.uade.tpo.Models;
 
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
 import com.uade.tpo.EstadoPartido.IEstadoPartido;
+import com.uade.tpo.Observer.Observable;
 import com.uade.tpo.Restriccion.IRestriccion;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Partido {
+public class Partido extends Observable {
     private Enums.TipoDeporte tipoDeporte;
     private int cantidadJugadoresRequerida;
     private float duracionEncuentro;
@@ -25,20 +26,25 @@ public class Partido {
         this.restricciones = new ArrayList<>();
     }
 
-
-    public void agregarJugador(Usuario usuario) {
+    void agregarJugador(Usuario usuario) {
+        this.estado.agregarJugador(this, usuario);
     }
 
     public void iniciar() {
+        this.estado.iniciarPartido(this);
     }
 
     public void finalizar() {
+        this.estado.finalizar(this);
     }
 
     public void cancelar() {
+        this.estado.cancelar(this);
     }
 
-    public void cambiarEstadoPartido(IEstadoPartido estado) {
+    public void cambiarEstado(IEstadoPartido nuevoEstado) {
+        this.estado = nuevoEstado;
+        notificarObservadores("El partido cambió a: " + nuevoEstado.toString());
     }
 
     public void buscarPartido() {
@@ -134,4 +140,6 @@ public class Partido {
     public void setMetodoEmparejamiento(IEmparejamiento metodoEmparejamiento) {
         this.metodoEmparejamiento = metodoEmparejamiento;
     }
+
+
 }

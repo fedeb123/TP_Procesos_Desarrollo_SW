@@ -18,6 +18,11 @@ public class EnJuego implements IEstadoPartido {
     @Override
     public void finalizar(Partido partido) {
         partido.setEstado(new Finalizado());
+
+        for (Usuario u : partido.getJugadores()) {
+            partido.eliminarObservador(u);
+        }
+
         System.out.println("El partido ha finalizado.");
     }
 
