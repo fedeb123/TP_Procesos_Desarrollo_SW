@@ -7,7 +7,8 @@ public class Armado implements IEstadoPartido {
 
     @Override
     public void iniciarPartido(Partido partido) {
-        System.out.println("Esperando confirmación de todos los jugadores...");
+        partido.setEstado(new Confirmado());
+        System.out.println("Confirmando partido");
     }
 
     @Override
@@ -23,6 +24,11 @@ public class Armado implements IEstadoPartido {
     @Override
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
+
+        for (Usuario u: partido.getJugadores()){
+            partido.eliminarObservador(u);
+        }
+
         System.out.println("El partido fue cancelado.");
     }
 

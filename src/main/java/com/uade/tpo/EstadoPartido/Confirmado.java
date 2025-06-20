@@ -24,6 +24,11 @@ public class Confirmado implements IEstadoPartido {
     @Override
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
+
+        for (Usuario u: partido.getJugadores()){
+            partido.eliminarObservador(u);
+        }
+
         System.out.println("El partido fue cancelado antes de comenzar.");
     }
 
