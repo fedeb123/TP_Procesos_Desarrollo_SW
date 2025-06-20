@@ -1,8 +1,8 @@
 package com.uade.tpo.Restriccion;
 
-public class RestriccionPorHistorial implements IRestriccion {
+public class PorHistorial implements IRestriccion {
 
-    public RestriccionPorHistorial() {}
+    public PorHistorial() {}
 
     @Override
     public boolean cumple() {
