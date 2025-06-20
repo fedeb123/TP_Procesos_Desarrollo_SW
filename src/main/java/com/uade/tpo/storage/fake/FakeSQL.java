@@ -1,4 +1,4 @@
-package com.uade.tpo.storage;
+package com.uade.tpo.storage.fake;
 
 public class FakeSQL {
     private static final FakeSQL instance = new FakeSQL();

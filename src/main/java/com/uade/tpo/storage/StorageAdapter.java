@@ -1,11 +1,10 @@
-package com.uade.tpo.storage.adapter;
+package com.uade.tpo.storage;
 
 import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Zona;
-import com.uade.tpo.storage.FakeSQL;
-import com.uade.tpo.storage.IStorage;
+import com.uade.tpo.storage.fake.FakeSQL;
 
 public class StorageAdapter implements IStorage {
     private final FakeSQL sql ;

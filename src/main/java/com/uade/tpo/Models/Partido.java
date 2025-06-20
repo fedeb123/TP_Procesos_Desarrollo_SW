@@ -2,6 +2,7 @@ package com.uade.tpo.Models;
 
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
 import com.uade.tpo.EstadoPartido.IEstadoPartido;
+import com.uade.tpo.EstadoPartido.NecesitaJugadores;
 import com.uade.tpo.Observer.Observable;
 import com.uade.tpo.Restriccion.IRestriccion;
 
@@ -21,9 +22,25 @@ public class Partido extends Observable {
     private ArrayList<IRestriccion> restricciones;
     private IEmparejamiento metodoEmparejamiento;
 
-    public Partido() {
+    private Partido() {
+    }
+
+    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
+                   String direccion, Usuario organizadorPartido,
+                   ArrayList<IRestriccion> restricciones,
+                   IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro) {
+
         this.jugadores = new ArrayList<>();
-        this.restricciones = new ArrayList<>();
+        this.restricciones = restricciones;
+        this.tipoDeporte = tipoDeporte;
+        this.ubicacion = ubicacion;
+        this.horario = horario;
+        this.direccion = direccion;
+        this.organizadorPartido = organizadorPartido;
+        this.metodoEmparejamiento = metodoEmparejamiento;
+        this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
+        this.duracionEncuentro = duracionEncuentro;
+        this.estado = new NecesitaJugadores();
     }
 
     void agregarJugador(Usuario usuario) {

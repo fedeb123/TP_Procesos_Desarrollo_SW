@@ -2,6 +2,7 @@ package com.uade.tpo.Models;
 
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
 import com.uade.tpo.Observer.Observer;
+import com.uade.tpo.Services.INotificacionService;
 
 public class Usuario implements Observer {
 
@@ -98,10 +99,6 @@ public class Usuario implements Observer {
 
     public void setMetodoEmparejamiento(IEmparejamiento metodoEmparejamiento) {
         this.metodoEmparejamiento = metodoEmparejamiento;
-    }
-
-    public void crearPartido() {
-        // Te la debo
     }
 
     public void cambiarMetodoEmparejamiento(IEmparejamiento nuevoMetodo) {

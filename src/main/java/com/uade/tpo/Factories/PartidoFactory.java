@@ -1,4 +1,4 @@
-package com.uade.tpo.factories;
+package com.uade.tpo.Factories;
 
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
 import com.uade.tpo.EstadoPartido.NecesitaJugadores;
