@@ -1,8 +1,8 @@
 package com.uade.tpo.EstadoPartido;
 
 import com.uade.tpo.Models.Enums;
-import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Partido;
+import com.uade.tpo.Models.Usuario;
 
 public class NecesitaJugadores implements IEstadoPartido {
 

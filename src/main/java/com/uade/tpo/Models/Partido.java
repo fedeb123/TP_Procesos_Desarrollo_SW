@@ -1,11 +1,11 @@
 package com.uade.tpo.Models;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
 import com.uade.tpo.EstadoPartido.IEstadoPartido;
 import com.uade.tpo.Restriccion.IRestriccion;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Partido {
     private Enums.TipoDeporte tipoDeporte;
@@ -27,18 +27,25 @@ public class Partido {
 
 
     public void agregarJugador(Usuario usuario) {
+      this.estado.agregarJugador(this, usuario);
     }
 
     public void iniciar() {
+      this.estado.iniciarPartido(this);
     }
 
     public void finalizar() {
+      this.estado.finalizar(this);
     }
 
     public void cancelar() {
+      this.estado.cancelar(this);
     }
 
     public void cambiarEstadoPartido(IEstadoPartido estado) {
+      this.estado=estado;
+      System.out.println("Se cambió el estado del partido a "+estado);
+
     }
 
     public void buscarPartido() {
