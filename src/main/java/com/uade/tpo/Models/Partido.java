@@ -1,12 +1,12 @@
 package com.uade.tpo.Models;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
 import com.uade.tpo.EstadoPartido.IEstadoPartido;
 import com.uade.tpo.Observer.Observable;
 import com.uade.tpo.Restriccion.IRestriccion;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Partido extends Observable {
     private Enums.TipoDeporte tipoDeporte;
