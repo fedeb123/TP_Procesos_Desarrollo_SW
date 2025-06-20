@@ -17,10 +17,21 @@ public class Usuario implements Observer {
     private Zona ubicacion;
     private IEmparejamiento metodoEmparejamiento;
 
-    public Usuario() {
+    public Usuario(String nombre, String apellido, char sexo, String dni, String correo, String contraseña,
+                   Enums.TipoDeporte deporteFav, Enums.TipoNivelDeJuego nivelJuego, Zona ubicacion,
+                   IEmparejamiento metodoEmparejamiento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.sexo = sexo;
+        this.dni = dni;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.deporteFav = deporteFav;
+        this.nivelJuego = nivelJuego;
+        this.ubicacion = ubicacion;
+        this.metodoEmparejamiento = metodoEmparejamiento;
     }
 
-    // Getters y setters
     public String getNombre() {
         return nombre;
     }
