@@ -116,9 +116,5 @@ public class Usuario implements Observer {
         this.metodoEmparejamiento = nuevoMetodo;
     }
 
-    @Override
-    public void notificar(String mensaje) {
-        System.out.println("[" + nombre + "] recibió notificación: " + mensaje);
-    }
 }
 

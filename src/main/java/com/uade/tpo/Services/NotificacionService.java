@@ -4,6 +4,7 @@ import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Notificaciones.INotificador;
 import com.uade.tpo.Notificaciones.adapters.EmailAdapter;
 import com.uade.tpo.Notificaciones.adapters.PushAdapter;
+import com.uade.tpo.Observer.Observer;
 
 import java.util.List;
 
@@ -16,6 +17,12 @@ public class NotificacionService {
     public NotificacionService() {
         this.pushAdapter = new PushAdapter();
         this.emailAdapter = new EmailAdapter();
+    }
+
+    public void notificar(Observer o, String mensaje) {
+        this.pushAdapter.notificar(o, mensaje);
+        this.emailAdapter.notificar(o, mensaje);
+
     }
 
     public void notificarATodos(List<Usuario> usuarios, String mensaje) {

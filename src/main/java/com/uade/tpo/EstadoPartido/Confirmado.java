@@ -1,5 +1,6 @@
 package com.uade.tpo.EstadoPartido;
 
+import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Services.INotificacionService;
@@ -7,23 +8,23 @@ import com.uade.tpo.Services.INotificacionService;
 public class Confirmado implements IEstadoPartido {
 
     @Override
-    public void iniciarPartido(Partido partido, INotificacionService notificacionService) {
+    public void iniciarPartido(Partido partido) {
         partido.setEstado(new EnJuego());
         System.out.println("El partido ha comenzado.");
     }
 
     @Override
-    public void agregarJugador(Partido partido, Usuario jugador, INotificacionService notificacionService) {
+    public void agregarJugador(Partido partido, Usuario jugador) {
         System.out.println("El partido ya fue confirmado. No se pueden agregar jugadores.");
     }
 
     @Override
-    public void finalizar(Partido partido, INotificacionService notificacionService) {
+    public void finalizar(Partido partido) {
         System.out.println("El partido aún no comenzó. No se puede finalizar.");
     }
 
     @Override
-    public void cancelar(Partido partido, INotificacionService notificacionService) {
+    public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
 
         for (Usuario u: partido.getJugadores()){
@@ -35,7 +36,7 @@ public class Confirmado implements IEstadoPartido {
 
     @Override
     public String toString() {
-        return "Confirmado";
+        return Enums.TipoEstadoPartido.CONFIRMADO.toString();
     }
 }
 

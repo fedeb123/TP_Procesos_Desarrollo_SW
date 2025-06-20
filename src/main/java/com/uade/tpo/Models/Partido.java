@@ -23,13 +23,17 @@ public class Partido extends Observable {
     private ArrayList<IRestriccion> restricciones;
     private IEmparejamiento metodoEmparejamiento;
 
+    // no crear partidos vacios
     private Partido() {
+        super(null);
     }
 
     public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
                    String direccion, Usuario organizadorPartido,
                    ArrayList<IRestriccion> restricciones,
-                   IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro) {
+                   IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, INotificacionService notificacionService) {
+
+        super(notificacionService);
 
         this.jugadores = new ArrayList<>();
         this.restricciones = restricciones;
@@ -47,7 +51,9 @@ public class Partido extends Observable {
     public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
                    String direccion, Usuario organizadorPartido,
                    ArrayList<IRestriccion> restricciones,
-                   IEmparejamiento metodoEmparejamiento) {
+                   IEmparejamiento metodoEmparejamiento, INotificacionService notificacionService) {
+
+        super(notificacionService);
 
         this.jugadores = new ArrayList<>();
         this.restricciones = restricciones;
@@ -60,8 +66,8 @@ public class Partido extends Observable {
         this.estado = new NecesitaJugadores();
     }
 
-    public void agregarJugador(Usuario usuario, INotificacionService notificacionService) {
-        this.estado.agregarJugador(this, usuario, notificacionService);
+    public void agregarJugador(Usuario usuario) {
+        this.estado.agregarJugador(this, usuario);
     }
 
     public void iniciar() {

@@ -10,8 +10,8 @@ public class FakeJavaMail {
         return instancia;
     }
 
-    public void enviarCorreo(String destino, String asunto, String cuerpo) {
-        System.out.println("📧 [Email enviado] A: " + destino + " - Asunto: " + asunto + " - Cuerpo: " + cuerpo);
+    public void enviarCorreo(String destino, String asunto, String texto) {
+        System.out.println("mail a: " + destino + " - asunto: " + asunto + " - texto: " + texto);
     }
 }
 

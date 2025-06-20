@@ -1,18 +1,21 @@
 package com.uade.tpo.Services;
 
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
+import com.uade.tpo.EstadoPartido.Armado;
 import com.uade.tpo.EstadoPartido.IEstadoPartido;
 import com.uade.tpo.Models.DTO.PartidoDTO;
 import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Zona;
+import com.uade.tpo.Observer.Observer;
 import com.uade.tpo.Restriccion.IRestriccion;
 import com.uade.tpo.storage.IStorage;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class PartidoService {
@@ -45,22 +48,23 @@ public class PartidoService {
 
         var usuarios = this.usuarioService.getUsuarios();
 
-        List<Usuario> notificarUsuarios = usuarios.stream()
-                .filter(u -> u.getDeporteFav() == partido.getTipoDeporte())
-                .toList();
+        List<Observer> notificarUsuarios = new ArrayList<>();
+        for (Usuario u : usuarios) {
+            if (u.getDeporteFav() == partido.getTipoDeporte()) {
+                notificarUsuarios.add(u);
+            }
+        }
 
         this.notificacionService.notificarATodos(notificarUsuarios, "Se creo un partido de tu deporte favorito");
 
         return nuevoPartido;
     }
 
-    public void agregarJugador(Partido partido,Usuario usuario) {
+    public void agregarJugador(Partido partido, Usuario usuario) {
         partido.agregarJugador(usuario);
 
-        if ()
-
-        this.notificacionService.notificarATodos(notificarUsuarios, "Se creo un partido de tu deporte favorito");
-
-        return nuevoPartido;
+        if (Objects.equals(partido.getEstado().toString(), Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString())) {
+            partido.notificarObservadores("Partido armado");
+        }
     }
 }

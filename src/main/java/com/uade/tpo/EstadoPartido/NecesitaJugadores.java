@@ -8,13 +8,13 @@ import com.uade.tpo.Services.INotificacionService;
 public class NecesitaJugadores implements IEstadoPartido {
 
     @Override
-    public void iniciarPartido(Partido partido, INotificacionService notificacionService) {
+    public void iniciarPartido(Partido partido) {
         // No se puede iniciar aún, faltan jugadores
         System.out.println("No se puede iniciar el partido, aún faltan jugadores.");
     }
 
     @Override
-    public void agregarJugador(Partido partido, Usuario usuario, INotificacionService notificacionService) {
+    public void agregarJugador(Partido partido, Usuario usuario) {
         partido.getJugadores().add(usuario);
         partido.agregarObservador(usuario);
 
@@ -27,12 +27,12 @@ public class NecesitaJugadores implements IEstadoPartido {
     }
 
     @Override
-    public void finalizar(Partido partido, INotificacionService notificacionService) {
+    public void finalizar(Partido partido) {
         System.out.println("No se puede finalizar el partido. Todavía no comenzó.");
     }
 
     @Override
-    public void cancelar(Partido partido, INotificacionService notificacionService) {
+    public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
 
         for (Usuario u : partido.getJugadores()) {
