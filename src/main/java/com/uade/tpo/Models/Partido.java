@@ -43,27 +43,9 @@ public class Partido extends Observable {
         this.direccion = direccion;
         this.organizadorPartido = organizadorPartido;
         this.metodoEmparejamiento = metodoEmparejamiento;
+        this.estado = new NecesitaJugadores();
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
         this.duracionEncuentro = duracionEncuentro;
-        this.estado = new NecesitaJugadores();
-    }
-
-    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
-                   String direccion, Usuario organizadorPartido,
-                   ArrayList<IRestriccion> restricciones,
-                   IEmparejamiento metodoEmparejamiento, INotificacionService notificacionService) {
-
-        super(notificacionService);
-
-        this.jugadores = new ArrayList<>();
-        this.restricciones = restricciones;
-        this.tipoDeporte = tipoDeporte;
-        this.ubicacion = ubicacion;
-        this.horario = horario;
-        this.direccion = direccion;
-        this.organizadorPartido = organizadorPartido;
-        this.metodoEmparejamiento = metodoEmparejamiento;
-        this.estado = new NecesitaJugadores();
     }
 
     public void agregarJugador(Usuario usuario) {

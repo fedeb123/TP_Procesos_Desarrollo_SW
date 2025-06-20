@@ -5,10 +5,7 @@ import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Zona;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FakeSQL {
     private static final FakeSQL instance = new FakeSQL();
@@ -41,7 +38,8 @@ public class FakeSQL {
 
     public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
         return partidos.stream()
-                .filter(p -> p.getUbicacion().equals(zona) && p.getTipoDeporte() == tipoDeporte)
+                .filter(p -> p.getUbicacion().equals(zona) && p.getTipoDeporte() == tipoDeporte &&
+                        Objects.equals(p.getEstado().toString(), Enums.TipoEstadoPartido.NECESITA_JUGADORES.toString()))
                 .toList();
     }
 }

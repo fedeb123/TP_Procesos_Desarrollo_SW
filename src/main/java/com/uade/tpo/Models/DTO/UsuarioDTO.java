@@ -7,16 +7,16 @@ import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Zona;
 
 public class UsuarioDTO {
-    private String nombre;
-    private String apellido;
-    private String correo;
-    private String contraseña;
-    private char sexo;
-    private String dni;
-    private TipoNivelDeJuego nivelJuego;
-    private TipoDeporte deporteFavorito;
-    private Zona ubicacion;
-    private IEmparejamiento metodoEmparejamiento;
+    private final String nombre;
+    private final String apellido;
+    private final String correo;
+    private final String contraseña;
+    private final char sexo;
+    private final String dni;
+    private final TipoNivelDeJuego nivelJuego;
+    private final TipoDeporte deporteFavorito;
+    private final Zona ubicacion;
+    private final IEmparejamiento metodoEmparejamiento;
 
     public UsuarioDTO(String nombre, String apellido, String correo, String contraseña, char sexo,
                       String dni, TipoNivelDeJuego nivelJuego, TipoDeporte deporteFavorito, Zona ubicacion, IEmparejamiento emparejamiento) {
@@ -36,73 +36,46 @@ public class UsuarioDTO {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getApellido() {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
 
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
 
     public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
 
     public char getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
 
     public String getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
 
     public TipoNivelDeJuego getNivelJuego() {
         return nivelJuego;
     }
 
-    public void setNivelJuego(TipoNivelDeJuego nivelJuego) {
-        this.nivelJuego = nivelJuego;
-    }
 
     public TipoDeporte getDeporteFavorito() {
         return deporteFavorito;
     }
 
-    public void setDeporteFavorito(TipoDeporte deporteFavorito) {
-        this.deporteFavorito = deporteFavorito;
-    }
 
     public Zona getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(Zona ubicacion) {
-        this.ubicacion = ubicacion;
-    }
 
     public Usuario toUsuario() {
         return new Usuario(
@@ -115,7 +88,7 @@ public class UsuarioDTO {
                 this.deporteFavorito,
                 this.nivelJuego,
                 this.ubicacion,
-               this.metodoEmparejamiento
+                this.metodoEmparejamiento
         );
     }
 }

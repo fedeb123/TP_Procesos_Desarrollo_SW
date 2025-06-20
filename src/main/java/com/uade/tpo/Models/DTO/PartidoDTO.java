@@ -6,23 +6,27 @@ import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Zona;
 import com.uade.tpo.Restriccion.IRestriccion;
+import com.uade.tpo.Services.INotificacionService;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class PartidoDTO {
-    private Enums.TipoDeporte tipoDeporte;
-    private Zona ubicacion;
-    private Date horario;
-    private String direccion;
-    private Usuario organizadorPartido;
-    private ArrayList<IRestriccion> restricciones;
-    private IEmparejamiento metodoEmparejamiento;
+    private final Enums.TipoDeporte tipoDeporte;
+    private final Zona ubicacion;
+    private final Date horario;
+    private final String direccion;
+    private final Usuario organizadorPartido;
+    private final ArrayList<IRestriccion> restricciones;
+    private final IEmparejamiento metodoEmparejamiento;
+    private final int cantidadJugadoresRequerida;
+    private final float duracionEncuentro;
 
     public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
                       String direccion, Usuario organizadorPartido,
                       ArrayList<IRestriccion> restricciones,
-                      IEmparejamiento metodoEmparejamiento) {
+                      IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro) {
+
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
         this.horario = horario;
@@ -30,67 +34,46 @@ public class PartidoDTO {
         this.organizadorPartido = organizadorPartido;
         this.restricciones = restricciones;
         this.metodoEmparejamiento = metodoEmparejamiento;
+        this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
+        this.duracionEncuentro = duracionEncuentro;
     }
-
-    // Getters y setters...
 
     public Enums.TipoDeporte getTipoDeporte() {
         return tipoDeporte;
     }
 
-    public void setTipoDeporte(Enums.TipoDeporte tipoDeporte) {
-        this.tipoDeporte = tipoDeporte;
-    }
 
     public Zona getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(Zona ubicacion) {
-        this.ubicacion = ubicacion;
-    }
 
     public Date getHorario() {
         return horario;
     }
 
-    public void setHorario(Date horario) {
-        this.horario = horario;
-    }
 
     public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public Usuario getOrganizadorPartido() {
         return organizadorPartido;
     }
 
-    public void setOrganizadorPartido(Usuario organizadorPartido) {
-        this.organizadorPartido = organizadorPartido;
-    }
 
     public ArrayList<IRestriccion> getRestricciones() {
         return restricciones;
     }
 
-    public void setRestricciones(ArrayList<IRestriccion> restricciones) {
-        this.restricciones = restricciones;
-    }
 
     public IEmparejamiento getMetodoEmparejamiento() {
         return metodoEmparejamiento;
     }
 
-    public void setMetodoEmparejamiento(IEmparejamiento metodoEmparejamiento) {
-        this.metodoEmparejamiento = metodoEmparejamiento;
-    }
 
-    public Partido toPartido() {
+    public Partido toPartido(INotificacionService notificacionService) {
         return new Partido(
                 this.tipoDeporte,
                 this.ubicacion,
@@ -98,7 +81,10 @@ public class PartidoDTO {
                 this.direccion,
                 this.organizadorPartido,
                 this.restricciones,
-                this.metodoEmparejamiento
+                this.metodoEmparejamiento,
+                this.cantidadJugadoresRequerida,
+                this.duracionEncuentro,
+                notificacionService
         );
     }
 }
