@@ -10,6 +10,7 @@ import com.uade.tpo.Services.INotificacionService;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class Partido extends Observable {
     private Enums.TipoDeporte tipoDeporte;
     private int cantidadJugadoresRequerida;
@@ -49,6 +50,7 @@ public class Partido extends Observable {
     }
 
     public void agregarJugador(Usuario usuario) {
+
         this.estado.agregarJugador(this, usuario);
     }
 

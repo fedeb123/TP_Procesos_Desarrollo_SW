@@ -1,5 +1,6 @@
 package com.uade.tpo.Observer;
 
+
 import com.uade.tpo.Services.INotificacionService;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Observable {
         this.notificacionService = notificacionService;
     }
 
+
     public void agregarObservador(Observer o) {
         observers.add(o);
     }
@@ -23,6 +25,7 @@ public class Observable {
 
     public void notificarObservadores(String mensaje) {
         for (Observer o : observers) {
+
             this.notificacionService.notificar(o,mensaje);
         }
     }
@@ -31,5 +34,6 @@ public class Observable {
         return observers;
     }
 }
+
 
 

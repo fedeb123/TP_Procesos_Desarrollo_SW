@@ -14,6 +14,7 @@ public class Confirmado implements IEstadoPartido {
         partido.notificarObservadores("Partido en juego");
 
 
+
         System.out.println("El partido ha comenzado.");
     }
 
@@ -33,6 +34,7 @@ public class Confirmado implements IEstadoPartido {
 
         partido.notificarObservadores("Partido cancelado");
 
+
         for (Usuario u: partido.getJugadores()){
             partido.eliminarObservador(u);
         }
@@ -43,6 +45,7 @@ public class Confirmado implements IEstadoPartido {
     @Override
     public String toString() {
         return Enums.TipoEstadoPartido.CONFIRMADO.toString();
+
     }
 }
 

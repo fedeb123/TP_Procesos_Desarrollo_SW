@@ -5,6 +5,7 @@ import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Services.INotificacionService;
 
+
 public class EnJuego implements IEstadoPartido {
 
     @Override
@@ -23,6 +24,7 @@ public class EnJuego implements IEstadoPartido {
 
         partido.notificarObservadores("Partido finalizado");
 
+
         for (Usuario u : partido.getJugadores()) {
             partido.eliminarObservador(u);
         }
@@ -38,6 +40,7 @@ public class EnJuego implements IEstadoPartido {
     @Override
     public String toString() {
         return Enums.TipoEstadoPartido.EN_JUEGO.toString();
+
     }
 }
 

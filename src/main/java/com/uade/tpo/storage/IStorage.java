@@ -16,4 +16,5 @@ public interface IStorage {
     public void guardarPartido(Partido partido);
 
     public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte);
+
 }

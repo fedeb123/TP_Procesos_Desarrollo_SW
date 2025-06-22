@@ -113,9 +113,11 @@ public class Usuario implements Notificable {
         this.metodoEmparejamiento = metodoEmparejamiento;
     }
 
+
     public void cambiarMetodoEmparejamiento(IEmparejamiento nuevoMetodo) {
         this.metodoEmparejamiento = nuevoMetodo;
     }
+
 
 }
 

@@ -11,5 +11,6 @@ public interface IEstadoPartido {
 
     void finalizar(Partido partido);
 
+
     void cancelar(Partido partido);
 }

@@ -5,6 +5,7 @@ import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Services.INotificacionService;
 
+
 public class NecesitaJugadores implements IEstadoPartido {
 
     @Override
@@ -25,6 +26,7 @@ public class NecesitaJugadores implements IEstadoPartido {
 
             partido.notificarObservadores("Partido armado");
 
+
             System.out.println("Partido armado automáticamente.");
         }
     }
@@ -41,6 +43,7 @@ public class NecesitaJugadores implements IEstadoPartido {
         partido.notificarObservadores("Partido cancelado");
 
         for (Usuario u : partido.getJugadores()) {
+
             partido.eliminarObservador(u);
         }
 
