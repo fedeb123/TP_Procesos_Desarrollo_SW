@@ -1,9 +1,11 @@
 package com.uade.tpo.Models;
 
 import com.uade.tpo.Emparejamiento.IEmparejamiento;
+import com.uade.tpo.Observer.Notificable;
 import com.uade.tpo.Observer.Observer;
+import com.uade.tpo.Services.INotificacionService;
 
-public class Usuario implements Observer {
+public class Usuario implements Notificable {
 
     private String nombre;
     private String apellido;
@@ -16,10 +18,21 @@ public class Usuario implements Observer {
     private Zona ubicacion;
     private IEmparejamiento metodoEmparejamiento;
 
-    public Usuario() {
+    public Usuario(String nombre, String apellido, char sexo, String dni, String correo, String contraseña,
+                   Enums.TipoDeporte deporteFav, Enums.TipoNivelDeJuego nivelJuego, Zona ubicacion,
+                   IEmparejamiento metodoEmparejamiento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.sexo = sexo;
+        this.dni = dni;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.deporteFav = deporteFav;
+        this.nivelJuego = nivelJuego;
+        this.ubicacion = ubicacion;
+        this.metodoEmparejamiento = metodoEmparejamiento;
     }
 
-    // Getters y setters
     public String getNombre() {
         return nombre;
     }
@@ -100,17 +113,11 @@ public class Usuario implements Observer {
         this.metodoEmparejamiento = metodoEmparejamiento;
     }
 
-    public void crearPartido() {
-        // Te la debo
-    }
 
     public void cambiarMetodoEmparejamiento(IEmparejamiento nuevoMetodo) {
         this.metodoEmparejamiento = nuevoMetodo;
     }
 
-    @Override
-    public void notificar(String mensaje) {
-        System.out.println("[" + nombre + "] recibió notificación: " + mensaje);
-    }
+
 }
 

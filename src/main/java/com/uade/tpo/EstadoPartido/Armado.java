@@ -1,13 +1,20 @@
 package com.uade.tpo.EstadoPartido;
 
+
+import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
+import com.uade.tpo.Services.INotificacionService;
 
 public class Armado implements IEstadoPartido {
 
     @Override
     public void iniciarPartido(Partido partido) {
         partido.setEstado(new Confirmado());
+
+        partido.notificarObservadores("Partido confirmado");
+
+
         System.out.println("Confirmando partido");
     }
 
@@ -25,6 +32,9 @@ public class Armado implements IEstadoPartido {
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
 
+        partido.notificarObservadores("Partido cancelado");
+
+
         for (Usuario u: partido.getJugadores()){
             partido.eliminarObservador(u);
         }
@@ -34,7 +44,8 @@ public class Armado implements IEstadoPartido {
 
     @Override
     public String toString() {
-        return "Partido armado";
+        return Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString();
+
     }
 }
 

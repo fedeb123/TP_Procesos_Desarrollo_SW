@@ -1,7 +1,10 @@
 package com.uade.tpo.EstadoPartido;
 
+import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
+import com.uade.tpo.Services.INotificacionService;
+
 
 public class EnJuego implements IEstadoPartido {
 
@@ -19,6 +22,9 @@ public class EnJuego implements IEstadoPartido {
     public void finalizar(Partido partido) {
         partido.setEstado(new Finalizado());
 
+        partido.notificarObservadores("Partido finalizado");
+
+
         for (Usuario u : partido.getJugadores()) {
             partido.eliminarObservador(u);
         }
@@ -33,7 +39,8 @@ public class EnJuego implements IEstadoPartido {
 
     @Override
     public String toString() {
-        return "En juego";
+        return Enums.TipoEstadoPartido.EN_JUEGO.toString();
+
     }
 }
 

@@ -1,7 +1,10 @@
 package com.uade.tpo.EstadoPartido;
 
+import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
+import com.uade.tpo.Services.INotificacionService;
+
 
 public class Cancelado implements IEstadoPartido {
 
@@ -27,7 +30,7 @@ public class Cancelado implements IEstadoPartido {
 
     @Override
     public String toString() {
-        return "Cancelado";
+        return Enums.TipoEstadoPartido.CANCELADO.toString();
     }
 }
 

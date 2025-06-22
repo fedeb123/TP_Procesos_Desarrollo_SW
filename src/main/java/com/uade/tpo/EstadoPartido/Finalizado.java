@@ -1,7 +1,10 @@
 package com.uade.tpo.EstadoPartido;
 
+import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
+import com.uade.tpo.Services.INotificacionService;
+
 
 public class Finalizado implements IEstadoPartido {
 
@@ -27,7 +30,8 @@ public class Finalizado implements IEstadoPartido {
 
     @Override
     public String toString() {
-        return "Finalizado";
+        return Enums.TipoEstadoPartido.FINALIZADO.toString();
+
     }
 }
 
