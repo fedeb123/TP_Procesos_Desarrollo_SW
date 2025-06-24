@@ -24,8 +24,8 @@ public class PartidoService {
         this.usuarioService = us;
     }
 
-   public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte){
-        return this.storage.buscarPartidos(zona, tipoDeporte);
+   public List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte){
+        return this.storage.buscarPartido(zona, tipoDeporte);
    }
 
     public void crearPartido(PartidoDTO partido) {

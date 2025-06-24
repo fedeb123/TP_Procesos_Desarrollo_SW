@@ -13,5 +13,5 @@ import java.util.List;
 public interface IPartidoService {
     void crearPartido(PartidoDTO partido);
     void agregarJugador(Partido partido, Usuario usuario);
-    List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte);
+    List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte);
 }

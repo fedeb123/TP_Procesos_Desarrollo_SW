@@ -25,7 +25,7 @@ public class Partido extends Observable {
     private IEmparejamiento metodoEmparejamiento;
 
     // no crear partidos vacios
-    private Partido() {
+    public Partido() {
         super(null);
     }
 
