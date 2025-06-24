@@ -1,9 +1,8 @@
-package com.uade.tpo.EstadoPartido;
+package com.uade.tpo.estadopartido;
 
-import com.uade.tpo.Models.Enums;
-import com.uade.tpo.Models.Partido;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Services.INotificacionService;
+import com.uade.tpo.models.Enums;
+import com.uade.tpo.models.Partido;
+import com.uade.tpo.models.Usuario;
 
 
 public class EnJuego implements IEstadoPartido {
@@ -22,7 +21,7 @@ public class EnJuego implements IEstadoPartido {
     public void finalizar(Partido partido) {
         partido.setEstado(new Finalizado());
 
-        partido.notificarObservadores("Partido finalizado");
+        partido.notificar("Partido finalizado");
 
 
         for (Usuario u : partido.getJugadores()) {

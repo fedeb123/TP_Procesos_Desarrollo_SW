@@ -1,17 +1,15 @@
-package com.uade.tpo.Models;
-
-import com.uade.tpo.Emparejamiento.IEmparejamiento;
-import com.uade.tpo.EstadoPartido.IEstadoPartido;
-import com.uade.tpo.EstadoPartido.NecesitaJugadores;
-import com.uade.tpo.Observer.Observable;
-import com.uade.tpo.Restriccion.IRestriccion;
-import com.uade.tpo.Services.INotificacionService;
+package com.uade.tpo.models;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.uade.tpo.emparejamiento.IEmparejamiento;
+import com.uade.tpo.estadopartido.IEstadoPartido;
+import com.uade.tpo.estadopartido.NecesitaJugadores;
+import com.uade.tpo.observer.NotificadorObservable;
+import com.uade.tpo.restriccion.IRestriccion;
 
-public class Partido extends Observable {
+public class Partido extends NotificadorObservable {
     private Enums.TipoDeporte tipoDeporte;
     private int cantidadJugadoresRequerida;
     private float duracionEncuentro;
@@ -25,18 +23,9 @@ public class Partido extends Observable {
     private IEmparejamiento metodoEmparejamiento;
     private Enums.TipoNivelDeJuego maximoNivel;
 
-    // no crear partidos vacios
-    public Partido() {
-        super(null);
-    }
-
-    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
-                   String direccion, Usuario organizadorPartido,
-                   ArrayList<IRestriccion> restricciones,
-                   IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro,
-                   INotificacionService notificacionService, Enums.TipoNivelDeJuego maximoNivel) {
-
-        super(notificacionService);
+    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
+        
+        super();
 
         this.jugadores = new ArrayList<>();
         this.restricciones = restricciones;
@@ -71,7 +60,7 @@ public class Partido extends Observable {
 
     public void cambiarEstado(IEstadoPartido nuevoEstado) {
         this.estado = nuevoEstado;
-        notificarObservadores("El partido cambió a: " + nuevoEstado.toString());
+        notificar("El partido cambió a: " + nuevoEstado.toString());
     }
 
     public void buscarPartido() {

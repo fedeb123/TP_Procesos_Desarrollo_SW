@@ -1,9 +1,8 @@
-package com.uade.tpo.EstadoPartido;
+package com.uade.tpo.estadopartido;
 
-import com.uade.tpo.Models.Enums;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Models.Partido;
-import com.uade.tpo.Services.INotificacionService;
+import com.uade.tpo.models.Enums;
+import com.uade.tpo.models.Partido;
+import com.uade.tpo.models.Usuario;
 
 
 public class NecesitaJugadores implements IEstadoPartido {
@@ -24,7 +23,7 @@ public class NecesitaJugadores implements IEstadoPartido {
         if (partido.getJugadores().size() == partido.getCantidadJugadoresRequerida()) {
             partido.setEstado(new Armado());
 
-            partido.notificarObservadores("Partido armado");
+            partido.notificar("Partido armado");
 
 
             System.out.println("Partido armado automáticamente.");
@@ -40,7 +39,7 @@ public class NecesitaJugadores implements IEstadoPartido {
     public void cancelar(Partido partido) {
         partido.setEstado(new Cancelado());
 
-        partido.notificarObservadores("Partido cancelado");
+        partido.notificar("Partido cancelado");
 
         for (Usuario u : partido.getJugadores()) {
 

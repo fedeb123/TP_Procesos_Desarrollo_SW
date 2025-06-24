@@ -1,9 +1,9 @@
-package com.uade.tpo.Models;
+package com.uade.tpo.models;
 
-import com.uade.tpo.Emparejamiento.IEmparejamiento;
-import com.uade.tpo.Observer.Observer;
+import com.uade.tpo.emparejamiento.IEmparejamiento;
+import com.uade.tpo.observer.INotificadorObserver;
 
-public class Usuario implements Observer {
+public class Usuario implements INotificadorObserver {
 
     private String nombre;
     private String apellido;
@@ -16,9 +16,7 @@ public class Usuario implements Observer {
     private Zona ubicacion;
     private IEmparejamiento metodoEmparejamiento;
 
-    public Usuario(String nombre, String apellido, char sexo, String dni, String correo, String contraseña,
-                   Enums.TipoDeporte deporteFav, Enums.TipoNivelDeJuego nivelJuego, Zona ubicacion,
-                   IEmparejamiento metodoEmparejamiento) {
+    public Usuario(String nombre, String apellido, char sexo, String dni, String correo, String contraseña, Enums.TipoDeporte deporteFav, Enums.TipoNivelDeJuego nivelJuego, Zona ubicacion, IEmparejamiento metodoEmparejamiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
@@ -115,6 +113,10 @@ public class Usuario implements Observer {
         this.metodoEmparejamiento = nuevoMetodo;
     }
 
+    @Override
+    public void update(){
+        //hacer algo
+    } 
 
 }
 
