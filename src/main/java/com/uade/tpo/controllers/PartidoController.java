@@ -1,32 +1,68 @@
 package com.uade.tpo.controllers;
 
-import com.uade.tpo.Models.DTO.PartidoDTO;
-import com.uade.tpo.Models.Enums;
-import com.uade.tpo.Models.Partido;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Models.Zona;
-import com.uade.tpo.Services.IPartidoService;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import com.uade.tpo.models.Enums;
+import com.uade.tpo.models.Partido;
+import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Zona;
+import com.uade.tpo.models.dto.PartidoDTO;
 
 public class PartidoController {
 
-    private final IPartidoService partidoService;
+    private ArrayList<Partido> partidos;
 
-    public PartidoController(IPartidoService partidoService) {
-        this.partidoService = partidoService;
+    private static PartidoController instance;
+
+    public static PartidoController getInstance() {
+        if (instance == null) {
+            instance = new PartidoController();
+        }
+        return instance;
+    }
+
+    private PartidoController() {
+        super();
+    }
+
+    //public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte);
+
+    public List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte) {
+        return this.partidos.stream().filter(p -> p.getUbicacion().equals(zona) && p.getTipoDeporte() == tipoDeporte && Objects.equals(p.getEstado().toString(), Enums.TipoEstadoPartido.NECESITA_JUGADORES.toString())).toList();
     }
 
     public void crearPartido(PartidoDTO partido) {
-        partidoService.crearPartido(partido);
-        System.out.println("Partido creado");
+
+        UsuarioController usuarioController = UsuarioController.getInstance();
+
+        // validar cosas aca, me da fiaca
+
+        // hacer clase estatica que devuelva esta info
+        int cantidadJugadoresRequerida = 0;
+        float duracionEncuentro = 0;
+
+        var nuevoPartido = partido.toPartido();
+
+        nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
+        nuevoPartido.setDuracionEncuentro(duracionEncuentro);
+
+        var usuarios = usuarioController.getUsuarios();
+
+        this.partidos.add(nuevoPartido);
     }
 
     public void agregarJugador(Partido partido, Usuario usuario) {
-        partidoService.agregarJugador(partido, usuario);
+        partido.agregarJugador(usuario);
+
+        if (Objects.equals(partido.getEstado().toString(), Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString())) {
+            partido.notificar("Partido armado");
+        }
     }
 
-   public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte){
-        return partidoService.buscarPartido(zona,tipoDeporte);
-   }
+    public List<Partido> getHistorial(Usuario usuario){
+        return this.partidos.stream().filter(p -> p.getJugadores().contains(usuario)).toList();
+    }
 }
+

@@ -1,21 +1,46 @@
 package com.uade.tpo.controllers;
 
-import com.uade.tpo.Models.DTO.UsuarioDTO;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Services.IUsuarioService;
-import com.uade.tpo.Services.UsuarioService;
+import java.util.ArrayList;
+
+import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.dto.UsuarioDTO;
 
 public class UsuarioController {
 
-    private final IUsuarioService usuarioService;
+    private final ArrayList<Usuario> usuarios;
 
-    public UsuarioController(IUsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
+    private static UsuarioController instance;
+
+    private UsuarioController() {
+        this.usuarios = new ArrayList<>();
     }
 
-    public void registrarUsuario(UsuarioDTO usuario) {
-        usuarioService.crearUsuario(usuario);
+    public static UsuarioController getInstance() {
+        if (instance == null) {
+            instance = new UsuarioController();
+        }
+        return instance;
+    }        
+
+    public Usuario crearUsuario(UsuarioDTO usuario) {
+        // Validar cosas aca, me da fiaca ahora
+
+        var nuevoUsuario = usuario.toUsuario();
+
         System.out.println("Usuario creado");
+
+        usuarios.add(nuevoUsuario);
+
+        return nuevoUsuario;
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public Usuario buscarUsuario(String dni){
+        return this.usuarios.stream().filter(u -> u.getDni().contains(dni)).findFirst().orElse(null);
     }
 }
+
 
