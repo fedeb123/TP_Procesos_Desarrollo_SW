@@ -42,5 +42,11 @@ public class FakeSQL {
                         Objects.equals(p.getEstado().toString(), Enums.TipoEstadoPartido.NECESITA_JUGADORES.toString()))
                 .toList();
     }
+
+    public List<Partido> getHistorial(Usuario usuario) {
+        return partidos.stream()
+                .filter(p -> p.getJugadores().contains(usuario))
+                .toList();
+    }
 }
 

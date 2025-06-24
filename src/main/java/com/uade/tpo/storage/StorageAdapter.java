@@ -35,4 +35,9 @@ public class StorageAdapter implements IStorage {
     public ArrayList<Usuario> getUsuarios(){
         return this.sql.buscarUsuarios();
     }
+
+    @Override
+    public List<Partido> getHistorial(Usuario usuario){
+        return this.sql.getHistorial(usuario);
+    }
 }

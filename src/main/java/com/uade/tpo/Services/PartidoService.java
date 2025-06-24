@@ -65,4 +65,8 @@ public class PartidoService {
             partido.notificarObservadores("Partido armado");
         }
     }
+
+    List<Partido> getHistorial(Usuario usuario){
+        return this.storage.getHistorial(usuario);
+    }
 }

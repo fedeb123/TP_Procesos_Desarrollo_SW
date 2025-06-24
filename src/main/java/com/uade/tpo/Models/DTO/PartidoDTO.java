@@ -21,6 +21,7 @@ public class PartidoDTO {
     private final IEmparejamiento metodoEmparejamiento;
     private final int cantidadJugadoresRequerida;
     private final float duracionEncuentro;
+    private Enums.TipoNivelDeJuego maximoNivel;
 
     public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
                       String direccion, Usuario organizadorPartido,
@@ -84,7 +85,8 @@ public class PartidoDTO {
                 this.metodoEmparejamiento,
                 this.cantidadJugadoresRequerida,
                 this.duracionEncuentro,
-                notificacionService
+                notificacionService,
+                this.maximoNivel
         );
     }
 }
