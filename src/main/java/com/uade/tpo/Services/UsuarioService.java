@@ -13,14 +13,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UsuarioService {
+public class UsuarioService implements IUsuarioService {
 
     private final IStorage storage;
-    private final INotificacionService notificacionService;
 
-    public UsuarioService(IStorage s, INotificacionService ns) {
+    public UsuarioService(IStorage s) {
         this.storage = s;
-        this.notificacionService = ns;
     }
 
     public Usuario crearUsuario(UsuarioDTO usuario) {
