@@ -14,4 +14,5 @@ public interface IPartidoService {
     void crearPartido(PartidoDTO partido);
     void agregarJugador(Partido partido, Usuario usuario);
     List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte);
+    List<Partido> getHistorial(Usuario usuario);
 }

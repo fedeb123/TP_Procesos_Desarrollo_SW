@@ -17,4 +17,6 @@ public interface IStorage {
     public void guardarPartido(Partido partido);
 
     List<Partido> buscarPartido(Zona zona, TipoDeporte tipoDeporte);
+
+    List<Partido> getHistorial(Usuario usuario);
 }

@@ -4,7 +4,6 @@ import com.uade.tpo.Models.Enums;
 import com.uade.tpo.Models.Partido;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Zona;
-import com.uade.tpo.storage.FakeSQL;
 import com.uade.tpo.storage.IStorage;
 
 import java.util.List;

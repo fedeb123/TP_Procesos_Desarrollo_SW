@@ -23,6 +23,7 @@ public class Partido extends Observable {
     private ArrayList<Usuario> jugadores;
     private ArrayList<IRestriccion> restricciones;
     private IEmparejamiento metodoEmparejamiento;
+    private Enums.TipoNivelDeJuego maximoNivel;
 
     // no crear partidos vacios
     public Partido() {
@@ -32,7 +33,8 @@ public class Partido extends Observable {
     public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
                    String direccion, Usuario organizadorPartido,
                    ArrayList<IRestriccion> restricciones,
-                   IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, INotificacionService notificacionService) {
+                   IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro,
+                   INotificacionService notificacionService, Enums.TipoNivelDeJuego maximoNivel) {
 
         super(notificacionService);
 
@@ -47,6 +49,7 @@ public class Partido extends Observable {
         this.estado = new NecesitaJugadores();
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
         this.duracionEncuentro = duracionEncuentro;
+        this.maximoNivel = maximoNivel;
     }
 
     public void agregarJugador(Usuario usuario) {
@@ -112,6 +115,11 @@ public class Partido extends Observable {
     public Date getHorario() {
         return horario;
     }
+
+    public Enums.TipoNivelDeJuego getMaximoNivel() {
+        return maximoNivel;
+    }
+
 
     public void setHorario(Date horario) {
         this.horario = horario;
