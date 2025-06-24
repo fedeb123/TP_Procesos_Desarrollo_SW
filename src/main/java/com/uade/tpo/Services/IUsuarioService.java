@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface IUsuarioService {
     ArrayList<Usuario> getUsuarios();
-    void crearUsuario(UsuarioDTO usuario);
+    Usuario crearUsuario(UsuarioDTO usuario);
 }

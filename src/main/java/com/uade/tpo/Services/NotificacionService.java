@@ -9,7 +9,7 @@ import com.uade.tpo.Observer.Observer;
 import java.util.List;
 
 
-public class NotificacionService {
+public class NotificacionService implements INotificacionService {
 
     private final INotificador pushAdapter;
     private final INotificador emailAdapter;
