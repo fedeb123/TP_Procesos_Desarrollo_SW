@@ -1,9 +1,9 @@
-package com.uade.tpo.Emparejamiento;
+package com.uade.tpo.emparejamiento;
 
 
-import com.uade.tpo.Models.Partido;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Models.Zona;
+import com.uade.tpo.models.Partido;
+import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Zona;
 
 public class PorCercania implements IEmparejamiento {
 

@@ -1,4 +1,4 @@
-package com.uade.tpo.Restriccion;
+package com.uade.tpo.restriccion;
 
 public class PorHistorial implements IRestriccion {
 

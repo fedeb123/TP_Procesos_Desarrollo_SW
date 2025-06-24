@@ -1,15 +1,14 @@
-package com.uade.tpo.Models.DTO;
-
-import com.uade.tpo.Emparejamiento.IEmparejamiento;
-import com.uade.tpo.Models.Enums;
-import com.uade.tpo.Models.Partido;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Models.Zona;
-import com.uade.tpo.Restriccion.IRestriccion;
-import com.uade.tpo.Services.INotificacionService;
+package com.uade.tpo.models.dto;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.uade.tpo.emparejamiento.IEmparejamiento;
+import com.uade.tpo.models.Enums;
+import com.uade.tpo.models.Partido;
+import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Zona;
+import com.uade.tpo.restriccion.IRestriccion;
 
 public class PartidoDTO {
     private final Enums.TipoDeporte tipoDeporte;
@@ -23,10 +22,7 @@ public class PartidoDTO {
     private final float duracionEncuentro;
     private Enums.TipoNivelDeJuego maximoNivel;
 
-    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario,
-                      String direccion, Usuario organizadorPartido,
-                      ArrayList<IRestriccion> restricciones,
-                      IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro) {
+    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro) {
 
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
@@ -74,7 +70,7 @@ public class PartidoDTO {
     }
 
 
-    public Partido toPartido(INotificacionService notificacionService) {
+    public Partido toPartido() {
         return new Partido(
                 this.tipoDeporte,
                 this.ubicacion,
@@ -85,7 +81,6 @@ public class PartidoDTO {
                 this.metodoEmparejamiento,
                 this.cantidadJugadoresRequerida,
                 this.duracionEncuentro,
-                notificacionService,
                 this.maximoNivel
         );
     }

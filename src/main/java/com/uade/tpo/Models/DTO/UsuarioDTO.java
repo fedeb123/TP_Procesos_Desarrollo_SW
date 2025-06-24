@@ -1,10 +1,10 @@
-package com.uade.tpo.Models.DTO;
+package com.uade.tpo.models.dto;
 
-import com.uade.tpo.Emparejamiento.IEmparejamiento;
-import com.uade.tpo.Models.Enums.TipoDeporte;
-import com.uade.tpo.Models.Enums.TipoNivelDeJuego;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Models.Zona;
+import com.uade.tpo.emparejamiento.IEmparejamiento;
+import com.uade.tpo.models.Enums.TipoDeporte;
+import com.uade.tpo.models.Enums.TipoNivelDeJuego;
+import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Zona;
 
 public class UsuarioDTO {
     private final String nombre;

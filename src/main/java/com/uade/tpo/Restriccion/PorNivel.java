@@ -1,6 +1,6 @@
-package com.uade.tpo.Restriccion;
+package com.uade.tpo.restriccion;
 
-import com.uade.tpo.Models.Enums;
+import com.uade.tpo.models.Enums;
 
 
 public class PorNivel implements IRestriccion {

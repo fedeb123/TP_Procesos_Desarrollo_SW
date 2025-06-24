@@ -1,4 +1,4 @@
-package com.uade.tpo.Models;
+package com.uade.tpo.models;
 
 public class Enums {
 
