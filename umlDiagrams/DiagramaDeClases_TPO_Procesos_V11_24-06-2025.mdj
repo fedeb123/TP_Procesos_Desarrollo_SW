@@ -12014,7 +12014,7 @@
 											"top": -392,
 											"width": 101.12451171875,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Domain)"
 										},
 										{
 											"_type": "LabelView",
@@ -13891,472 +13891,6 @@
 					]
 				},
 				{
-					"_type": "UMLEnumeration",
-					"_id": "AAAAAAGWrBK1TTTVPz8=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "tipoEstadoPartido",
-					"literals": [
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBMt0TUK8Rc=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBK1TTTVPz8="
-							},
-							"name": "NECESITAMOS_JUGADORES"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBM6njURCmg=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBK1TTTVPz8="
-							},
-							"name": "PARTIDO_ARMADO"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBNxEzUYR+g=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBK1TTTVPz8="
-							},
-							"name": "CONFIRMADO"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBN9ojUfoKs=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBK1TTTVPz8="
-							},
-							"name": "EN_JUEGO"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBOG1zUmGj8=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBK1TTTVPz8="
-							},
-							"name": "FINALIZADO"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBOS7jUtY28=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBK1TTTVPz8="
-							},
-							"name": "CANCELADO"
-						}
-					]
-				},
-				{
-					"_type": "UMLEnumeration",
-					"_id": "AAAAAAGWrBPSXDU1oXA=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "tipoNiveles",
-					"literals": [
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBPg9jVjDRM=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBPSXDU1oXA="
-							},
-							"name": "PRINCIPIANTE"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBPwVTVqarQ=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBPSXDU1oXA="
-							},
-							"name": "INTERMEDIO"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAGWrBP7TTVx3UY=",
-							"_parent": {
-								"$ref": "AAAAAAGWrBPSXDU1oXA="
-							},
-							"name": "AVANZADO"
-						}
-					]
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW1gPJAfDmVj8=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Deporte"
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW1gPj3PGIHtM=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "EstadoPartido",
-					"ownedElements": [
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGW1hjrfexDkrI=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gPj3PGIHtM="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gPj3PGIHtM="
-							},
-							"target": {
-								"$ref": "AAAAAAGWrA1lMzQr+ok="
-							}
-						}
-					]
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW1gQN/vJUe6Y=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Principiante",
-					"ownedElements": [
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGW1ga/Gw+v8FM=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gQN/vJUe6Y="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gQN/vJUe6Y="
-							},
-							"target": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							}
-						},
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGW1jAp+nyrapc=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gQN/vJUe6Y="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gQN/vJUe6Y="
-							},
-							"target": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							}
-						},
-						{
-							"_type": "UMLInterfaceRealization",
-							"_id": "AAAAAAGW1jMvdKolfm0=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gQN/vJUe6Y="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gQN/vJUe6Y="
-							},
-							"target": {
-								"$ref": "AAAAAAGW1i6QIEphd7E="
-							}
-						}
-					],
-					"operations": [
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGW1jNb6blaiRA=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gQN/vJUe6Y="
-							},
-							"name": "nivelJuego",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGW1jOOebnNRw8=",
-									"_parent": {
-										"$ref": "AAAAAAGW1jNb6blaiRA="
-									},
-									"name": "Usuario",
-									"type": ""
-								}
-							]
-						}
-					]
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW1gV9OADCd7I=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Intermedio",
-					"ownedElements": [
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGW1gbuORM1S8o=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							},
-							"target": {
-								"$ref": "AAAAAAGW1gWlnwPb8eM="
-							}
-						},
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGW1jBI+ICJsPA=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							},
-							"target": {
-								"$ref": "AAAAAAGW1gWlnwPb8eM="
-							}
-						},
-						{
-							"_type": "UMLInterfaceRealization",
-							"_id": "AAAAAAGW1jC2L4iwfHI=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							},
-							"target": {
-								"$ref": "AAAAAAGW1i6QIEphd7E="
-							}
-						}
-					],
-					"operations": [
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGW1jOhIbrXEnM=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gV9OADCd7I="
-							},
-							"name": "nivelJuego",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGW1jPHHLtKKo8=",
-									"_parent": {
-										"$ref": "AAAAAAGW1jOhIbrXEnM="
-									},
-									"name": "Usuario",
-									"type": ""
-								}
-							]
-						}
-					]
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW1gWlnwPb8eM=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Avanzado",
-					"ownedElements": [
-						{
-							"_type": "UMLInterfaceRealization",
-							"_id": "AAAAAAGW1jCjbobLvUY=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gWlnwPb8eM="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1gWlnwPb8eM="
-							},
-							"target": {
-								"$ref": "AAAAAAGW1i6QIEphd7E="
-							}
-						}
-					],
-					"operations": [
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGW1jPS/7v0AoU=",
-							"_parent": {
-								"$ref": "AAAAAAGW1gWlnwPb8eM="
-							},
-							"name": "nivelJuego",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGW1jPzbrxnXmg=",
-									"_parent": {
-										"$ref": "AAAAAAGW1jPS/7v0AoU="
-									},
-									"name": "Usuario",
-									"type": ""
-								}
-							]
-						}
-					]
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW1ha1U6zYE0U=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Partido"
-				},
-				{
-					"_type": "UMLInterface",
-					"_id": "AAAAAAGW1i6QIEphd7E=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "IHabilidad",
-					"ownedElements": [
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGW1i+QeWVfXe8=",
-							"_parent": {
-								"$ref": "AAAAAAGW1i6QIEphd7E="
-							},
-							"source": {
-								"$ref": "AAAAAAGW1i6QIEphd7E="
-							},
-							"target": {
-								"$ref": "AAAAAAGWrAhh0zOwLgE="
-							}
-						}
-					]
-				},
-				{
-					"_type": "UMLInterface",
-					"_id": "AAAAAAGW2d83JKH8IEo=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "IEmparejamiento"
-				},
-				{
-					"_type": "UMLInterface",
-					"_id": "AAAAAAGW2fkUH+iegY8=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "IPartidoFactory",
-					"attributes": [
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGW2iCKmx8rxMs=",
-							"_parent": {
-								"$ref": "AAAAAAGW2fkUH+iegY8="
-							},
-							"name": "partido",
-							"visibility": "private",
-							"type": {
-								"$ref": "AAAAAAGWrA1lMzQr+ok="
-							}
-						}
-					],
-					"operations": [
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGW2ggN41FyLT0=",
-							"_parent": {
-								"$ref": "AAAAAAGW2fkUH+iegY8="
-							},
-							"name": "crearPartido",
-							"visibility": "private",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGW2ggrqFI2/wE=",
-									"_parent": {
-										"$ref": "AAAAAAGW2ggN41FyLT0="
-									},
-									"type": {
-										"$ref": "AAAAAAGWrA1lMzQr+ok="
-									},
-									"direction": "return"
-								}
-							]
-						}
-					]
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW2jVKz1PbBx8=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Class1"
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW2jVQGFR88Qo=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Class2"
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW2jVbClUdiZM=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Class3"
-				},
-				{
-					"_type": "UMLSubsystem",
-					"_id": "AAAAAAGW2k7xvJxTDq0=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Subsystem1"
-				},
-				{
-					"_type": "UMLModel",
-					"_id": "AAAAAAGW2k8XI6GliSM=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Model1"
-				},
-				{
-					"_type": "UMLPackage",
-					"_id": "AAAAAAGW2lAYrrnHNp8=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Service"
-				},
-				{
-					"_type": "UMLPackage",
-					"_id": "AAAAAAGW2lB5b95LvL4=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Controllers",
-					"ownedElements": [
-						{
-							"_type": "UMLClass",
-							"_id": "AAAAAAGW2lCZMuUmiF0=",
-							"_parent": {
-								"$ref": "AAAAAAGW2lB5b95LvL4="
-							},
-							"name": "PartidoController"
-						},
-						{
-							"_type": "UMLClass",
-							"_id": "AAAAAAGW2lCzHerxB5A=",
-							"_parent": {
-								"$ref": "AAAAAAGW2lB5b95LvL4="
-							},
-							"name": "UsuarioController"
-						}
-					]
-				},
-				{
 					"_type": "UMLPackage",
 					"_id": "AAAAAAGW2lJYgaWIpQg=",
 					"_parent": {
@@ -14435,117 +13969,6 @@
 							},
 							"name": "Usuario",
 							"ownedElements": [
-								{
-									"_type": "UMLAssociation",
-									"_id": "AAAAAAGW1i9YiF82RrU=",
-									"_parent": {
-										"$ref": "AAAAAAGWrAhh0zOwLgE="
-									},
-									"end1": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW1i9YiF83bx4=",
-										"_parent": {
-											"$ref": "AAAAAAGW1i9YiF82RrU="
-										},
-										"reference": {
-											"$ref": "AAAAAAGWrAhh0zOwLgE="
-										}
-									},
-									"end2": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW1i9YiF84/vs=",
-										"_parent": {
-											"$ref": "AAAAAAGW1i9YiF82RrU="
-										},
-										"reference": {
-											"$ref": "AAAAAAGW1i6QIEphd7E="
-										},
-										"navigable": "navigable"
-									}
-								},
-								{
-									"_type": "UMLAssociation",
-									"_id": "AAAAAAGW2eATCLrKREA=",
-									"_parent": {
-										"$ref": "AAAAAAGWrAhh0zOwLgE="
-									},
-									"end1": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW2eATCLrLwEQ=",
-										"_parent": {
-											"$ref": "AAAAAAGW2eATCLrKREA="
-										},
-										"reference": {
-											"$ref": "AAAAAAGWrAhh0zOwLgE="
-										}
-									},
-									"end2": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW2eATCLrMZ6M=",
-										"_parent": {
-											"$ref": "AAAAAAGW2eATCLrKREA="
-										},
-										"reference": {
-											"$ref": "AAAAAAGW2d83JKH8IEo="
-										},
-										"navigable": "navigable"
-									}
-								},
-								{
-									"_type": "UMLAssociation",
-									"_id": "AAAAAAGW2gsIbcci60U=",
-									"_parent": {
-										"$ref": "AAAAAAGWrAhh0zOwLgE="
-									},
-									"end1": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW2gsIbccjjOE=",
-										"_parent": {
-											"$ref": "AAAAAAGW2gsIbcci60U="
-										},
-										"reference": {
-											"$ref": "AAAAAAGWrAhh0zOwLgE="
-										}
-									},
-									"end2": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW2gsIbcckV54=",
-										"_parent": {
-											"$ref": "AAAAAAGW2gsIbcci60U="
-										},
-										"reference": {
-											"$ref": "AAAAAAGW2fkUH+iegY8="
-										},
-										"navigable": "navigable"
-									}
-								},
-								{
-									"_type": "UMLAssociation",
-									"_id": "AAAAAAGW2gseccyNJ9Q=",
-									"_parent": {
-										"$ref": "AAAAAAGWrAhh0zOwLgE="
-									},
-									"end1": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW2gseccyOGow=",
-										"_parent": {
-											"$ref": "AAAAAAGW2gseccyNJ9Q="
-										},
-										"reference": {
-											"$ref": "AAAAAAGWrAhh0zOwLgE="
-										}
-									},
-									"end2": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAGW2gseccyPyKk=",
-										"_parent": {
-											"$ref": "AAAAAAGW2gseccyNJ9Q="
-										},
-										"reference": {
-											"$ref": "AAAAAAGW2fkUH+iegY8="
-										}
-									}
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAGW2m5C8/X6Ztg=",
@@ -15642,7 +15065,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXojfEGJNBIh4="
 											},
-											"name": "Usuario usuario"
+											"name": "Usuario usuario",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -17868,44 +17292,6 @@
 							]
 						},
 						{
-							"_type": "UMLInterface",
-							"_id": "AAAAAAGW5FjwUizQn2w=",
-							"_parent": {
-								"$ref": "AAAAAAGW2lJYgaWIpQg="
-							},
-							"name": "IStorage",
-							"operations": [
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAGW5Gayrjht7OM=",
-									"_parent": {
-										"$ref": "AAAAAAGW5FjwUizQn2w="
-									},
-									"name": "CrearUsuario",
-									"parameters": [
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAGW5GbSWDlVPVo=",
-											"_parent": {
-												"$ref": "AAAAAAGW5Gayrjht7OM="
-											},
-											"name": "usuario",
-											"type": ""
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAGW5GbSWDlWxAA=",
-											"_parent": {
-												"$ref": "AAAAAAGW5Gayrjht7OM="
-											},
-											"type": "void",
-											"direction": "return"
-										}
-									]
-								}
-							]
-						},
-						{
 							"_type": "UMLClass",
 							"_id": "AAAAAAGW9YNA6cFaNVo=",
 							"_parent": {
@@ -18506,7 +17892,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "cantidadJugadores int"
+											"name": "cantidadJugadores int",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18514,7 +17901,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "duracion float"
+											"name": "duracion float",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18522,7 +17910,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "ubicacion Zona"
+											"name": "ubicacion Zona",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18530,7 +17919,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "horario Date"
+											"name": "horario Date",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18538,7 +17928,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "direccion String"
+											"name": "direccion String",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18546,7 +17937,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "emparejamiento IEmparejamientoStrategy"
+											"name": "emparejamiento IEmparejamientoStrategy",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18554,7 +17946,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "jugadores ArrayList"
+											"name": "jugadores ArrayList",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18562,7 +17955,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/DzE60ykYE="
 											},
-											"name": "usuario Usuario"
+											"name": "usuario Usuario",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18619,7 +18013,8 @@
 											"_parent": {
 												"$ref": "AAAAAAGXn/UjtmkTVpw="
 											},
-											"name": "Usuario"
+											"name": "Usuario",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -18865,206 +18260,213 @@
 									"name": "FIREBASE"
 								}
 							]
-						}
-					]
-				},
-				{
-					"_type": "UMLPackage",
-					"_id": "AAAAAAGW2lSVdutMoPw=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "View"
-				},
-				{
-					"_type": "UMLInterface",
-					"_id": "AAAAAAGW4Bf8KLekIJo=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "IEmailService"
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW5FjO9SqgVsk=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Class4"
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAGW2k5CLXZ1aJw=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "UsuarioController",
-					"attributes": [
+						},
 						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGXoooadwI45FY=",
+							"_type": "UMLClass",
+							"_id": "AAAAAAGW1gPJAfDmVj8=",
 							"_parent": {
-								"$ref": "AAAAAAGW2k5CLXZ1aJw="
+								"$ref": "AAAAAAGW2lJYgaWIpQg="
 							},
-							"name": "usuarios",
-							"visibility": "private",
-							"type": "List<Usuario>"
-						}
-					],
-					"operations": [
+							"name": "Deporte"
+						},
 						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGW2lx3mQtKV0I=",
+							"_type": "UMLClass",
+							"_id": "AAAAAAGW1gPj3PGIHtM=",
 							"_parent": {
-								"$ref": "AAAAAAGW2k5CLXZ1aJw="
+								"$ref": "AAAAAAGW2lJYgaWIpQg="
 							},
-							"name": "crearUsuario",
-							"parameters": [
+							"name": "EstadoPartido",
+							"ownedElements": [
 								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGW2lyNSA0By4I=",
+									"_type": "UMLDependency",
+									"_id": "AAAAAAGW1hjrfexDkrI=",
 									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
+										"$ref": "AAAAAAGW1gPj3PGIHtM="
 									},
-									"type": {
-										"$ref": "AAAAAAGWrAhh0zOwLgE="
+									"source": {
+										"$ref": "AAAAAAGW1gPj3PGIHtM="
 									},
-									"direction": "return"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzeRzsnlQ=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "nombre",
-									"type": "String"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzeRztl7c=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "apellido",
-									"type": "String"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzeRzux64=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "sexo",
-									"type": "char"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzeRzvflA=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "dni",
-									"type": "String"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzehzwVS4=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "correo",
-									"type": "String"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzehzxtqg=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "contraseña",
-									"type": "String"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzehzydpU=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "deporteFav",
-									"type": {
-										"$ref": "AAAAAAGW1gPJAfDmVj8="
-									}
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzehzzVzI=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "nivelJuego",
-									"type": "<tipoNivelDeJuego>"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooZzehz0Vn4=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "ubicacion",
-									"type": {
-										"$ref": "AAAAAAGWrBYkrDV9fyM="
-									}
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXopf2jKkNFBA=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "partidosJugados",
-									"type": "int"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXosq2n0jOir4=",
-									"_parent": {
-										"$ref": "AAAAAAGW2lx3mQtKV0I="
-									},
-									"name": "notificacionPreferida",
-									"type": {
-										"$ref": "AAAAAAGXosocny8mw+c="
+									"target": {
+										"$ref": "AAAAAAGWrA1lMzQr+ok="
 									}
 								}
 							]
 						},
 						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAGXooNGIJzsALQ=",
+							"_type": "UMLClass",
+							"_id": "AAAAAAGW2k5CLXZ1aJw=",
 							"_parent": {
-								"$ref": "AAAAAAGW2k5CLXZ1aJw="
+								"$ref": "AAAAAAGW2lJYgaWIpQg="
 							},
-							"name": "buscarUsuario",
-							"parameters": [
+							"name": "UsuarioController",
+							"attributes": [
 								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooNJbJ3FvRI=",
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAGXoooadwI45FY=",
 									"_parent": {
-										"$ref": "AAAAAAGXooNGIJzsALQ="
+										"$ref": "AAAAAAGW2k5CLXZ1aJw="
 									},
-									"name": "dni",
-									"type": "String"
+									"name": "usuarios",
+									"visibility": "private",
+									"type": "List<Usuario>"
+								}
+							],
+							"operations": [
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGW2lx3mQtKV0I=",
+									"_parent": {
+										"$ref": "AAAAAAGW2k5CLXZ1aJw="
+									},
+									"name": "crearUsuario",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGW2lyNSA0By4I=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"type": {
+												"$ref": "AAAAAAGWrAhh0zOwLgE="
+											},
+											"direction": "return"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzeRzsnlQ=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "nombre",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzeRztl7c=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "apellido",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzeRzux64=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "sexo",
+											"type": "char"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzeRzvflA=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "dni",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzehzwVS4=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "correo",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzehzxtqg=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "contraseña",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzehzydpU=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "deporteFav",
+											"type": {
+												"$ref": "AAAAAAGW1gPJAfDmVj8="
+											}
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzehzzVzI=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "nivelJuego",
+											"type": "<tipoNivelDeJuego>"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooZzehz0Vn4=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "ubicacion",
+											"type": {
+												"$ref": "AAAAAAGWrBYkrDV9fyM="
+											}
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXopf2jKkNFBA=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "partidosJugados",
+											"type": "int"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXosq2n0jOir4=",
+											"_parent": {
+												"$ref": "AAAAAAGW2lx3mQtKV0I="
+											},
+											"name": "notificacionPreferida",
+											"type": {
+												"$ref": "AAAAAAGXosocny8mw+c="
+											}
+										}
+									]
 								},
 								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGXooNJbJ3GjCw=",
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGXooNGIJzsALQ=",
 									"_parent": {
-										"$ref": "AAAAAAGXooNGIJzsALQ="
+										"$ref": "AAAAAAGW2k5CLXZ1aJw="
 									},
-									"type": {
-										"$ref": "AAAAAAGWrAhh0zOwLgE="
-									},
-									"direction": "return"
+									"name": "buscarUsuario",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooNJbJ3FvRI=",
+											"_parent": {
+												"$ref": "AAAAAAGXooNGIJzsALQ="
+											},
+											"name": "dni",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGXooNJbJ3GjCw=",
+											"_parent": {
+												"$ref": "AAAAAAGXooNGIJzsALQ="
+											},
+											"type": {
+												"$ref": "AAAAAAGWrAhh0zOwLgE="
+											},
+											"direction": "return"
+										}
+									]
 								}
 							]
 						}
