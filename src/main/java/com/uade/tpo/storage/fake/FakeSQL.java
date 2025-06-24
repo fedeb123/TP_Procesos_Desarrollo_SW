@@ -36,7 +36,7 @@ public class FakeSQL {
         partidos.add(partido);
     }
 
-    public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
+    public List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte) {
         return partidos.stream()
                 .filter(p -> p.getUbicacion().equals(zona) && p.getTipoDeporte() == tipoDeporte &&
                         Objects.equals(p.getEstado().toString(), Enums.TipoEstadoPartido.NECESITA_JUGADORES.toString()))

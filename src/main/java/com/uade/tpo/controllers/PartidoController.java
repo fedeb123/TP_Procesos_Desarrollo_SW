@@ -27,6 +27,6 @@ public class PartidoController {
     }
 
    public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte){
-        return partidoService.buscarPartidos(zona,tipoDeporte);
+        return partidoService.buscarPartido(zona,tipoDeporte);
    }
 }

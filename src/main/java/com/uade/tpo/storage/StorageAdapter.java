@@ -27,8 +27,8 @@ public class StorageAdapter implements IStorage {
     }
 
     @Override
-    public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
-       return this.sql.buscarPartidos(zona, tipoDeporte);
+    public List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte) {
+       return this.sql.buscarPartido(zona, tipoDeporte);
     }
 
     @Override
