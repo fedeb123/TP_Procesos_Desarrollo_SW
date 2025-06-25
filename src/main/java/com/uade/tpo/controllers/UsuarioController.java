@@ -12,9 +12,10 @@ import com.uade.tpo.storage.Storage;
 public class UsuarioController {
 
     private static UsuarioController instance;
+    private final UsuarioService usuarioService;
 
     private UsuarioController() {
-        super();
+        this.usuarioService = UsuarioService.getInstance();
     }
 
     public static UsuarioController getInstance() {
@@ -25,7 +26,7 @@ public class UsuarioController {
     }        
 
     public void crearUsuario(UsuarioDTO usuario) {
-        Usuario nuevoUsuario = UsuarioService.getInstance().crearUsuario(usuario);
+        Usuario nuevoUsuario = this.usuarioService.crearUsuario(usuario);
     }
 
     public UsuarioDTO buscarUsuario(String dni){

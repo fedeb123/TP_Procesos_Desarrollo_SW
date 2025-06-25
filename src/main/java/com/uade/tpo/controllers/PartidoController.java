@@ -13,7 +13,8 @@ import com.uade.tpo.storage.Storage;
 
 public class PartidoController {
 
-    private static PartidoController instance; 
+    private static PartidoController instance;
+    private final PartidoService partidoService; 
 
     public static PartidoController getInstance() {
         if (instance == null) {
@@ -23,7 +24,7 @@ public class PartidoController {
     }
 
     private PartidoController() {
-        super();
+        this.partidoService = PartidoService.getInstance();
     }
 
     //public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte);
@@ -45,7 +46,7 @@ public class PartidoController {
     }
 
     public void crearPartido(PartidoDTO partido){        
-        Partido partidoCreado = PartidoService.getInstance().crearPartido(partido);
+        Partido partidoCreado = this.partidoService.crearPartido(partido);
     }
 
     public void agregarJugador(PartidoDTO partido, UsuarioDTO usuario) {
@@ -54,7 +55,11 @@ public class PartidoController {
     }
 
     public ArrayList<PartidoDTO> getHistorialPartidos(UsuarioDTO usuarioDTO){
-        ArrayList<PartidoDTO> partidosDTO = PartidoService.getInstance().getHistorialPartidos(usuarioDTO);
+        ArrayList<Partido> partidos = this.partidoService.getHistorialPartidos(usuarioDTO);
+        ArrayList<PartidoDTO> partidosDTO = new ArrayList<>();
+        for (Partido partido : partidos){
+            partidosDTO.add(partido.toDTO());
+        }        
         return partidosDTO;
     }
 }

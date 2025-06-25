@@ -74,7 +74,7 @@ public class PartidoService implements IPartidoService {
         }
     }
     
-    public ArrayList<PartidoDTO> getHistorialPartidos(UsuarioDTO usuario){
+    public ArrayList<Partido> getHistorialPartidos(UsuarioDTO usuario){
         ArrayList<Partido> partidos = Storage.getInstance().getPartidos(); 
 
         var usuarioEncontrado = Storage.getInstance().buscarUsuario(usuario.getDni());
@@ -83,11 +83,6 @@ public class PartidoService implements IPartidoService {
 
         partidos.stream().filter(p -> p.getJugadores().contains(usuarioEncontrado));
 
-        ArrayList<PartidoDTO> partidosDTO = new ArrayList<>();
-        for (Partido partido : partidos){
-            partidosDTO.add(partido.toDTO());
-        }
-
-        return partidosDTO;
+        return partidos;
     }
 }
