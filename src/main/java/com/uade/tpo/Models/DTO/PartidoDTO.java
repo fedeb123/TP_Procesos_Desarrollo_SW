@@ -15,9 +15,9 @@ public class PartidoDTO {
     private final IEmparejamiento metodoEmparejamiento;
     private final int cantidadJugadoresRequerida;
     private final float duracionEncuentro;
-    private final Enums.TipoNivelDeJuego maximoNivel;
+    private final Enums.TipoNivelDeJuego MinimoNivel;
 
-    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
+    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel) {
 
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
@@ -27,7 +27,7 @@ public class PartidoDTO {
         this.metodoEmparejamiento = metodoEmparejamiento;
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
         this.duracionEncuentro = duracionEncuentro;
-        this.maximoNivel = maximoNivel;
+        this.MinimoNivel = MinimoNivel;
     }
 
     public Enums.TipoDeporte getTipoDeporte() {
@@ -66,8 +66,8 @@ public class PartidoDTO {
         return duracionEncuentro;
     }
 
-    public Enums.TipoNivelDeJuego getMaximoNivel() {
-        return maximoNivel;
+    public Enums.TipoNivelDeJuego getMinimoNivel() {
+        return MinimoNivel;
     }
 
 }

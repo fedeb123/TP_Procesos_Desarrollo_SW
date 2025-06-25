@@ -21,6 +21,8 @@ public class Enums {
         FUTBOL,
         HOCKEY,
         HANDBALL,
-        BASQUET
+        BASQUET,
+        TENIS,
+        VOLEIBOL
     }
 }

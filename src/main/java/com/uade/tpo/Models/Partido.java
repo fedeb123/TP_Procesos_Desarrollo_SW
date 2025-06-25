@@ -20,9 +20,9 @@ public class Partido extends NotificadorObservable {
     private Usuario organizadorPartido;
     private ArrayList<Usuario> jugadores;
     private IEmparejamiento metodoEmparejamiento;
-    private final Enums.TipoNivelDeJuego maximoNivel;
+    private final Enums.TipoNivelDeJuego MinimoNivel;
 
-    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
+    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel) {
         this.jugadores = new ArrayList<>();
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
@@ -33,7 +33,7 @@ public class Partido extends NotificadorObservable {
         this.estado = new NecesitaJugadores();
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
         this.duracionEncuentro = duracionEncuentro;
-        this.maximoNivel = maximoNivel;
+        this.MinimoNivel = MinimoNivel;
     }
 
     public void agregarJugador(Usuario usuario) {
@@ -97,8 +97,8 @@ public class Partido extends NotificadorObservable {
         return horario;
     }
 
-    public Enums.TipoNivelDeJuego getMaximoNivel() {
-        return maximoNivel;
+    public Enums.TipoNivelDeJuego getMinimoNivel() {
+        return MinimoNivel;
     }
 
 
@@ -147,7 +147,7 @@ public class Partido extends NotificadorObservable {
     }
 
     public PartidoDTO toDTO(){
-        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido.toDTO(), this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.maximoNivel);
+        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido.toDTO(), this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.MinimoNivel);
     }
 
 

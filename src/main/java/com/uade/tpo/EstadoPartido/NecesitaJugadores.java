@@ -15,6 +15,12 @@ public class NecesitaJugadores implements IEstadoPartido {
 
     @Override
     public void agregarJugador(Partido partido, Usuario usuario) {
+
+        if (!partido.getMetodoEmparejamiento().puedeUnirse(usuario, partido)){
+            System.out.printf("%s: No puede unirse, no cumple con las restricciones de emparejamiento del partido %n", usuario.getNombre());
+            return;
+        }
+
         partido.getJugadores().add(usuario);
         partido.agregarObservador(usuario);
 
@@ -24,7 +30,6 @@ public class NecesitaJugadores implements IEstadoPartido {
             partido.setEstado(new Armado());
 
             partido.notificar("Partido armado");
-
 
             System.out.println("Partido armado automáticamente.");
         }

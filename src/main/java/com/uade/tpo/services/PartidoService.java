@@ -27,11 +27,6 @@ public class PartidoService implements IPartidoService {
     public Partido crearPartido(PartidoDTO partido) {
 
         // validar cosas aca, me da fiaca
-
-        // hacer clase estatica que devuelva esta info
-        int cantidadJugadoresRequerida = 0;
-        float duracionEncuentro = 0;
-
         // buscar si existe el organizador del partido
         // devolver el modelo si existe, sino fallar
         // crear el nuevo partido
@@ -40,10 +35,10 @@ public class PartidoService implements IPartidoService {
 
         //validar si el usuario no existe
 
-        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador, partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMaximoNivel());
+        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador, partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMinimoNivel());
 
-        nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
-        nuevoPartido.setDuracionEncuentro(duracionEncuentro);
+        nuevoPartido.setCantidadJugadoresRequerida(partido.getCantidadJugadoresRequerida());
+        nuevoPartido.setDuracionEncuentro(partido.getDuracionEncuentro());
 
         ArrayList<Usuario> usuariosANotificar = UsuarioRepository.getInstance().buscarUsuariosCoincidentesEnDeporte(partido.getTipoDeporte());
         usuariosANotificar.remove(usuarioCreador);
@@ -51,7 +46,7 @@ public class PartidoService implements IPartidoService {
         nuevoPartido.agregarObservador(usuarioCreador);
 
         for (Usuario usuario : usuariosANotificar){
-            usuario.update("Se creo un nuevo partido de: " + nuevoPartido.getTipoDeporte().toString() + "en tu zona: " + nuevoPartido.getUbicacion().toString()); 
+            usuario.update("Se creo un nuevo partido de: " + nuevoPartido.getTipoDeporte().toString() + " en tu zona: " + nuevoPartido.getUbicacion().getProvincia() + " , " + nuevoPartido.getUbicacion().getMunicipio()); 
         }
 
         usuarioCreador.update("Partido Creado con Exito!");

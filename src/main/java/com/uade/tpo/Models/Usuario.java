@@ -101,7 +101,7 @@ public class Usuario implements INotificadorObserver {
 
     @Override
     public void update(String notificacion){
-        //hacer algo
+        System.out.printf("Usuario: %s ha recibido la notificacion: %s %n", this.nombre, notificacion);
     }
     
     public UsuarioDTO toDTO(){
