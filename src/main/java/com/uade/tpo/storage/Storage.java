@@ -10,8 +10,8 @@ import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 
 public class Storage {
-    private ArrayList<Partido> partidos;
-    private ArrayList<Usuario> usuarios;
+    private final ArrayList<Partido> partidos;
+    private final ArrayList<Usuario> usuarios;
     private static Storage instance;
 
     public static Storage getInstance() {
@@ -22,7 +22,8 @@ public class Storage {
     }
 
     public Storage() {
-        super();
+        this.partidos = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
     }
 
     public ArrayList<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
