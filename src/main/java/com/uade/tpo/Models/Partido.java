@@ -61,9 +61,6 @@ public class Partido extends NotificadorObservable {
         notificar("El partido cambió a: " + nuevoEstado.toString());
     }
 
-    public void buscarPartido() {
-    }
-
     public void crearEmparejamiento(Usuario usuario) {
     }
 
@@ -161,7 +158,7 @@ public class Partido extends NotificadorObservable {
     }
 
     public PartidoDTO toDTO(){
-        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido, this.restricciones, this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.maximoNivel);
+        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido.toDTO(), this.restricciones, this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.maximoNivel);
     }
 
 
