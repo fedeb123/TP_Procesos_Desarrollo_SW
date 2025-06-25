@@ -2,8 +2,11 @@ package com.uade.tpo.controllers;
 
 import java.util.ArrayList;
 
+import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.UsuarioDTO;
+import com.uade.tpo.services.UsuarioService;
 
 public class UsuarioController {
 
@@ -23,23 +26,22 @@ public class UsuarioController {
     }        
 
     public void crearUsuario(UsuarioDTO usuario) {
-        // Validar cosas aca, me da fiaca ahora
-
-        Usuario nuevoUsuario = new Usuario(usuario.getNombre(), usuario.getApellido(), usuario.getSexo(), usuario.getDni(), usuario.getCorreo(), usuario.getContraseña(), usuario.getDeporteFavorito(), usuario.getNivelJuego(), usuario.getUbicacion());
-
-        System.out.println("Usuario creado");
-
+        Usuario nuevoUsuario = UsuarioService.getInstance().crearUsuario(usuario);
         usuarios.add(nuevoUsuario);
-
     }
 
-    public ArrayList<Usuario> getUsuarios() {
+    protected ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public Usuario buscarUsuario(String dni){
+    protected Usuario buscarUsuario(String dni){
         return this.usuarios.stream().filter(u -> u.getDni().contains(dni)).findFirst().orElse(null);
     }
+
+    protected ArrayList<Usuario> buscarUsuariosCoincidentes(Zona ubicacion, Enums.TipoDeporte deporte){
+        return new ArrayList<>(this.usuarios.stream().filter(u -> u.getUbicacion().equals(ubicacion) && u.getDeporteFav().equals(deporte)).toList());
+    }
+     
 }
 
 

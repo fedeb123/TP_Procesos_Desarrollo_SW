@@ -1,5 +1,6 @@
 package com.uade.tpo.controllers;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,12 +12,12 @@ import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.models.dto.UsuarioDTO;
+import com.uade.tpo.services.PartidoService;
+import com.uade.tpo.storage.Storage;
 
 public class PartidoController {
 
-    private ArrayList<Partido> partidos;
-
-    private static PartidoController instance;
+    private static PartidoController instance; 
 
     public static PartidoController getInstance() {
         if (instance == null) {
@@ -26,59 +27,38 @@ public class PartidoController {
     }
 
     private PartidoController() {
-        this.partidos = new ArrayList<>();
+        super();
     }
 
     //public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte);
 
-    public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
-        return this.partidos.stream().filter(p -> p.getUbicacion().equals(zona) && p.getTipoDeporte() == tipoDeporte && Objects.equals(p.getEstado().toString(), Enums.TipoEstadoPartido.NECESITA_JUGADORES.toString())).toList();
+    public ArrayList<PartidoDTO> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
+        ArrayList<Partido> partidosCoincidentes = Storage.getInstance().buscarPartidos(zona, tipoDeporte);
+        ArrayList<PartidoDTO> partidosDTO = new ArrayList<>();
+        
+        for (Partido partido : partidosCoincidentes){
+            partidosDTO.add(partido.toDTO());
+        }
+
+        return partidosDTO;
     }
 
-    public Partido buscarPartido(String direccion, Date fecha){
-        return this.partidos.stream().filter(p -> p.getDireccion().equals(direccion) && p.getHorario().equals(fecha)).findFirst().orElse(null);
+    public PartidoDTO buscarPartido(String direccion, Date fecha){
+        Partido partidoCoincidente = Storage.getInstance().buscarPartido(direccion, fecha);
+        return partidoCoincidente.toDTO();
     }
 
-    public void crearPartido(PartidoDTO partido) {
-
-        // validar cosas aca, me da fiaca
-
-        // hacer clase estatica que devuelva esta info
-        int cantidadJugadoresRequerida = 0;
-        float duracionEncuentro = 0;
-
-        // buscar si existe el organizador del partido
-        // devolver el modelo si existe, sino fallar
-        // crear el nuevo partido
-
-        var usuarioCreador = UsuarioController.getInstance().buscarUsuario(partido.getOrganizadorPartido().getDni());
-
-        //validar si el usuario no existe
-
-        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador,partido.getRestricciones(), partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMaximoNivel());
-
-        nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
-        nuevoPartido.setDuracionEncuentro(duracionEncuentro);
-
-        var usuarios = UsuarioController.getInstance().getUsuarios();
-
-        this.partidos.add(nuevoPartido);
+    public void crearPartido(PartidoDTO partido){        
+        Partido partidoCreado = PartidoService.getInstance().crearPartido(partido);
     }
 
     public void agregarJugador(PartidoDTO partido, UsuarioDTO usuario) {
-        Partido partidoEncontrado = this.buscarPartido(partido.getDireccion(), partido.getHorario());
-        Usuario usuarioEncontrado = UsuarioController.getInstance().buscarUsuario(usuario.getDni());
-
-        //poner validaciones si el partido o el usuario son null
-
-        partidoEncontrado.agregarJugador(usuarioEncontrado);
-
-        if (Objects.equals(partidoEncontrado.getEstado().toString(), Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString())) {
-            partidoEncontrado.notificar("Partido armado");
-        }
+        PartidoService.getInstance().agregarJugador(partido, usuario);
+        //validar si salio bien
     }
 
-    public List<Partido> getHistorial(Usuario usuario){
+    public ArrayList<PartidoDTO> getHistorialPartidos(Usuario usuarioDTO){
+        
         return this.partidos.stream().filter(p -> p.getJugadores().contains(usuario)).toList();
     }
 }
