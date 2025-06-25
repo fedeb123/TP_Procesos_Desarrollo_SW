@@ -12,9 +12,12 @@ public class Confirmado implements IEstadoPartido {
 
         partido.notificar("Partido en juego");
 
-
-
         System.out.println("El partido ha comenzado.");
+    }
+
+    @Override
+    public void confirmarParticipacion(Partido partido, Usuario usuario){
+        System.out.println("El partido está confirmado. No se pueden confirmar jugadores.");
     }
 
     @Override

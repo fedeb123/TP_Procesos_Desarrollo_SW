@@ -18,6 +18,11 @@ public class Finalizado implements IEstadoPartido {
     }
 
     @Override
+    public void confirmarParticipacion(Partido partido, Usuario usuario){
+        System.out.println("El partido está finalizado. No se pueden confirmar jugadores.");
+    }
+
+    @Override
     public void finalizar(Partido partido) {
         System.out.println("El partido ya se encuentra finalizado.");
     }

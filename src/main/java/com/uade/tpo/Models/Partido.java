@@ -19,11 +19,13 @@ public class Partido extends NotificadorObservable {
     private String direccion;
     private Usuario organizadorPartido;
     private ArrayList<Usuario> jugadores;
+    private ArrayList<Usuario> jugadoresConfirmados;
     private IEmparejamiento metodoEmparejamiento;
     private final Enums.TipoNivelDeJuego MinimoNivel;
 
     public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel) {
         this.jugadores = new ArrayList<>();
+        this.jugadoresConfirmados = new ArrayList<>();
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
         this.horario = horario;
@@ -75,6 +77,14 @@ public class Partido extends NotificadorObservable {
 
     public void setCantidadJugadoresRequerida(int cantidadJugadoresRequerida) {
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
+    }
+
+    public void confirmarJugador(Usuario jugador){
+        this.estado.confirmarParticipacion(this, jugador);
+    }
+
+    public ArrayList<Usuario> getJugadoresConfirmados(){
+        return this.jugadoresConfirmados;
     }
 
     public float getDuracionEncuentro() {

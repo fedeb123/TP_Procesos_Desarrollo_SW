@@ -51,6 +51,8 @@ public class PartidoService implements IPartidoService {
 
         usuarioCreador.update("Partido Creado con Exito!");
 
+        nuevoPartido.getJugadoresConfirmados().add(usuarioCreador);
+
         PartidoRepository.getInstance().guardarPartido(nuevoPartido);
 
         return nuevoPartido;
@@ -80,5 +82,12 @@ public class PartidoService implements IPartidoService {
         partidos.stream().filter(p -> p.getJugadores().contains(usuarioEncontrado));
 
         return partidos;
+    }
+
+    public void confirmarPartido(PartidoDTO partido, UsuarioDTO usuario){
+        var partidoEncontrado = PartidoRepository.getInstance().buscarPartido(partido.getDireccion(), partido.getHorario());
+        var usuarioEncontrado = UsuarioRepository.getInstance().buscarUsuario(usuario.getDni());
+
+        partidoEncontrado.confirmarJugador(usuarioEncontrado);
     }
 }

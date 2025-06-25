@@ -50,7 +50,7 @@ public class PartidoController {
     }
 
     public void agregarJugador(PartidoDTO partido, UsuarioDTO usuario) {
-        PartidoService.getInstance().agregarJugador(partido, usuario);
+        this.partidoService.agregarJugador(partido, usuario);
         //validar si salio bien
     }
 
@@ -61,6 +61,10 @@ public class PartidoController {
             partidosDTO.add(partido.toDTO());
         }        
         return partidosDTO;
+    }
+
+    public void confirmarPartipacion(PartidoDTO partido, UsuarioDTO usuario){
+        this.partidoService.confirmarPartido(partido, usuario);
     }
 }
 

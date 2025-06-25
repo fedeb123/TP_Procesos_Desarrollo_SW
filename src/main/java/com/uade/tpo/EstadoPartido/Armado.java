@@ -8,11 +8,31 @@ public class Armado implements IEstadoPartido {
 
     @Override
     public void iniciarPartido(Partido partido) {
-        partido.setEstado(new Confirmado());
+        System.out.println("No se puede iniciar un partido no confirmado!");
+    }
 
-        partido.notificar("Partido confirmado");
+    @Override
+    public void confirmarParticipacion(Partido partido, Usuario usuario){
+        var cantidadActual = partido.getJugadores().size();
+        var cantidadConfirmada = partido.getJugadoresConfirmados().size();
 
-        System.out.println("Confirmando partido");
+        if (partido.getJugadoresConfirmados().contains(usuario)) {
+            System.err.printf("El jugador: %s ya fue confirmado %n", usuario.getNombre());
+            return;
+        }
+
+        if (cantidadConfirmada < cantidadActual) {
+            partido.getJugadoresConfirmados().add(usuario);
+            cantidadConfirmada = partido.getJugadoresConfirmados().size();
+            System.out.printf("Recibida confirmacion de: %s %n", usuario.getNombre());
+        }
+
+        if (cantidadActual == cantidadConfirmada){
+            partido.setEstado(new Confirmado());
+            partido.notificar("Partido confirmado automaticamente!");
+            System.out.println("Confirmando partido");
+        }
+
     }
 
     @Override

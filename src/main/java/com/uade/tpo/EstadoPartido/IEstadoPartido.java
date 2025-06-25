@@ -8,8 +8,9 @@ public interface IEstadoPartido {
 
     void agregarJugador(Partido partido, Usuario usuario);
 
-    void finalizar(Partido partido);
+    void confirmarParticipacion(Partido partido, Usuario usuario);
 
+    void finalizar(Partido partido);
 
     void cancelar(Partido partido);
 }

@@ -18,6 +18,11 @@ public class EnJuego implements IEstadoPartido {
     }
 
     @Override
+    public void confirmarParticipacion(Partido partido, Usuario usuario){
+        System.out.println("El partido está en curso. No se pueden confirmar jugadores.");
+    }
+
+    @Override
     public void finalizar(Partido partido) {
         partido.setEstado(new Finalizado());
 

@@ -29,10 +29,15 @@ public class NecesitaJugadores implements IEstadoPartido {
         if (partido.getJugadores().size() == partido.getCantidadJugadoresRequerida()) {
             partido.setEstado(new Armado());
 
-            partido.notificar("Partido armado");
+            partido.notificar("Partido armado, No olvidar confirmar!");
 
             System.out.println("Partido armado automáticamente.");
         }
+    }
+
+    @Override
+    public void confirmarParticipacion(Partido partido, Usuario usuario){
+        System.out.println("El partido no esta armado. No se pueden confirmar jugadores.");
     }
 
     @Override

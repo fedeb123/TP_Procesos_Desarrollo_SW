@@ -52,8 +52,14 @@ public class App
         // Creo partido
         PartidoDTO partidoNuevo = new PartidoDTO(Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"), new Date(), "Av. Siempre Viva 123", organizador, new PorNivelMinimo(), 2, 90.0f, Enums.TipoNivelDeJuego.PRINCIPIANTE);
         partidoController.crearPartido(partidoNuevo);
+
+        // Agrego Jugadores al partido creado
         partidoController.agregarJugador(partidoNuevo, jugador);   
-        partidoController.agregarJugador(partidoNuevo, user2);   
+        partidoController.agregarJugador(partidoNuevo, user2);
+
+        // Confirmo participacion de Jugadores
+        partidoController.confirmarPartipacion(partidoNuevo, jugador);
+        partidoController.confirmarPartipacion(partidoNuevo, user2);
 
     }
 }
