@@ -8,9 +8,10 @@ import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.dto.PartidoDTO;
 
 public class PorHistorial implements IEmparejamiento {
+    private final int cantidadMinima;
 
     public PorHistorial(int cantidadMinima) {
-        if ()
+        this.cantidadMinima = cantidadMinima;
     }
 
     @Override
@@ -19,6 +20,8 @@ public class PorHistorial implements IEmparejamiento {
 
         ArrayList<PartidoDTO> historial = PartidoController.getInstance().getHistorialPartidos(usuario.toDTO());
 
-        return (int) historial.stream().filter(p -> p.getOrganizadorPartido().equals(organizador.toDTO())).count();
+        int cantidadPartidosJugados = (int) historial.stream().filter(p -> p.getOrganizadorPartido().equals(organizador.toDTO())).count();
+
+        return cantidadMinima <= cantidadPartidosJugados;
     }
 }
