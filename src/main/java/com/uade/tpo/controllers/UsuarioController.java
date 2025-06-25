@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Usuario;
-import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.repositories.UsuarioRepository;
 import com.uade.tpo.services.UsuarioService;
@@ -34,8 +33,8 @@ public class UsuarioController {
         return usuarioEncontrado.toDTO();
     }
 
-    public ArrayList<UsuarioDTO> buscarUsuariosCoincidentes(Zona ubicacion, Enums.TipoDeporte deporte){
-        ArrayList<Usuario> usuariosCoincidentes = UsuarioRepository.getInstance().buscarUsuariosCoincidentes(ubicacion, deporte);
+    public ArrayList<UsuarioDTO> buscarUsuariosCoincidentesEnDeporte(Enums.TipoDeporte deporte){
+        ArrayList<Usuario> usuariosCoincidentes = UsuarioRepository.getInstance().buscarUsuariosCoincidentesEnDeporte(deporte);
         ArrayList<UsuarioDTO> usuariosDTO = new ArrayList<>();
 
         for (Usuario usuario : usuariosCoincidentes){

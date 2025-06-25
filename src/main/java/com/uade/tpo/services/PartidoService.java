@@ -45,7 +45,7 @@ public class PartidoService implements IPartidoService {
         nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
         nuevoPartido.setDuracionEncuentro(duracionEncuentro);
 
-        ArrayList<Usuario> usuariosANotificar = UsuarioRepository.getInstance().buscarUsuariosCoincidentes(partido.getUbicacion(), partido.getTipoDeporte());
+        ArrayList<Usuario> usuariosANotificar = UsuarioRepository.getInstance().buscarUsuariosCoincidentesEnDeporte(partido.getTipoDeporte());
         usuariosANotificar.remove(usuarioCreador);
 
         nuevoPartido.agregarObservador(usuarioCreador);
