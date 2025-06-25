@@ -43,7 +43,7 @@ public class PartidoController {
         int cantidadJugadoresRequerida = 0;
         float duracionEncuentro = 0;
 
-        var nuevoPartido = partido.toPartido();
+        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), partido.getOrganizadorPartido(), partido.getRestricciones(), partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMaximoNivel());
 
         nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
         nuevoPartido.setDuracionEncuentro(duracionEncuentro);

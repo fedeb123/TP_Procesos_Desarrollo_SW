@@ -1,6 +1,6 @@
 package com.uade.tpo.models;
 
-import com.uade.tpo.emparejamiento.IEmparejamiento;
+import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.observer.INotificadorObserver;
 
 public class Usuario implements INotificadorObserver {
@@ -14,9 +14,8 @@ public class Usuario implements INotificadorObserver {
     private Enums.TipoDeporte deporteFav;
     private Enums.TipoNivelDeJuego nivelJuego;
     private Zona ubicacion;
-    private IEmparejamiento metodoEmparejamiento;
 
-    public Usuario(String nombre, String apellido, char sexo, String dni, String correo, String contraseña, Enums.TipoDeporte deporteFav, Enums.TipoNivelDeJuego nivelJuego, Zona ubicacion, IEmparejamiento metodoEmparejamiento) {
+    public Usuario(String nombre, String apellido, char sexo, String dni, String correo, String contraseña, Enums.TipoDeporte deporteFav, Enums.TipoNivelDeJuego nivelJuego, Zona ubicacion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
@@ -26,7 +25,6 @@ public class Usuario implements INotificadorObserver {
         this.deporteFav = deporteFav;
         this.nivelJuego = nivelJuego;
         this.ubicacion = ubicacion;
-        this.metodoEmparejamiento = metodoEmparejamiento;
     }
 
     public String getNombre() {
@@ -101,22 +99,14 @@ public class Usuario implements INotificadorObserver {
         this.ubicacion = ubicacion;
     }
 
-    public IEmparejamiento getMetodoEmparejamiento() {
-        return metodoEmparejamiento;
-    }
-
-    public void setMetodoEmparejamiento(IEmparejamiento metodoEmparejamiento) {
-        this.metodoEmparejamiento = metodoEmparejamiento;
-    }
-
-    public void cambiarMetodoEmparejamiento(IEmparejamiento nuevoMetodo) {
-        this.metodoEmparejamiento = nuevoMetodo;
-    }
-
     @Override
     public void update(){
         //hacer algo
-    } 
+    }
+    
+    public UsuarioDTO toDTO(){
+        return new UsuarioDTO(this.nombre, this.apellido, this.correo, this.contraseña, this.sexo, this.dni, this.nivelJuego, this.deporteFav, this.ubicacion);
+    }
 
 }
 

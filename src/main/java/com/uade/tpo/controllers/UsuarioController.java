@@ -22,16 +22,15 @@ public class UsuarioController {
         return instance;
     }        
 
-    public Usuario crearUsuario(UsuarioDTO usuario) {
+    public void crearUsuario(UsuarioDTO usuario) {
         // Validar cosas aca, me da fiaca ahora
 
-        var nuevoUsuario = usuario.toUsuario();
+        Usuario nuevoUsuario = new Usuario(usuario.getNombre(), usuario.getApellido(), usuario.getSexo(), usuario.getDni(), usuario.getCorreo(), usuario.getContraseña(), usuario.getDeporteFavorito(), usuario.getNivelJuego(), usuario.getUbicacion());
 
         System.out.println("Usuario creado");
 
         usuarios.add(nuevoUsuario);
 
-        return nuevoUsuario;
     }
 
     public ArrayList<Usuario> getUsuarios() {

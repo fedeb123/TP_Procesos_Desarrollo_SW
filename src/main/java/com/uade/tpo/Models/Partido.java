@@ -6,6 +6,7 @@ import java.util.Date;
 import com.uade.tpo.emparejamiento.IEmparejamiento;
 import com.uade.tpo.estadopartido.IEstadoPartido;
 import com.uade.tpo.estadopartido.NecesitaJugadores;
+import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.observer.NotificadorObservable;
 import com.uade.tpo.restriccion.IRestriccion;
 
@@ -24,9 +25,6 @@ public class Partido extends NotificadorObservable {
     private Enums.TipoNivelDeJuego maximoNivel;
 
     public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
-        
-        super();
-
         this.jugadores = new ArrayList<>();
         this.restricciones = restricciones;
         this.tipoDeporte = tipoDeporte;
@@ -160,6 +158,10 @@ public class Partido extends NotificadorObservable {
 
     public void setMetodoEmparejamiento(IEmparejamiento metodoEmparejamiento) {
         this.metodoEmparejamiento = metodoEmparejamiento;
+    }
+
+    public PartidoDTO toDTO(){
+        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido, this.restricciones, this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.maximoNivel);
     }
 
 

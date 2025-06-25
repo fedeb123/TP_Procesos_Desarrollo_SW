@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.uade.tpo.emparejamiento.IEmparejamiento;
 import com.uade.tpo.models.Enums;
-import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.restriccion.IRestriccion;
@@ -22,7 +21,7 @@ public class PartidoDTO {
     private final float duracionEncuentro;
     private Enums.TipoNivelDeJuego maximoNivel;
 
-    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro) {
+    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
 
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
@@ -33,6 +32,7 @@ public class PartidoDTO {
         this.metodoEmparejamiento = metodoEmparejamiento;
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
         this.duracionEncuentro = duracionEncuentro;
+        this.maximoNivel = maximoNivel;
     }
 
     public Enums.TipoDeporte getTipoDeporte() {
@@ -69,19 +69,16 @@ public class PartidoDTO {
         return metodoEmparejamiento;
     }
 
-
-    public Partido toPartido() {
-        return new Partido(
-                this.tipoDeporte,
-                this.ubicacion,
-                this.horario,
-                this.direccion,
-                this.organizadorPartido,
-                this.restricciones,
-                this.metodoEmparejamiento,
-                this.cantidadJugadoresRequerida,
-                this.duracionEncuentro,
-                this.maximoNivel
-        );
+    public int getCantidadJugadoresRequerida() {
+        return cantidadJugadoresRequerida;
     }
+
+    public float getDuracionEncuentro() {
+        return duracionEncuentro;
+    }
+
+    public Enums.TipoNivelDeJuego getMaximoNivel() {
+        return maximoNivel;
+    }
+
 }

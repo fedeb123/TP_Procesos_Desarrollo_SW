@@ -1,9 +1,7 @@
 package com.uade.tpo.models.dto;
 
-import com.uade.tpo.emparejamiento.IEmparejamiento;
 import com.uade.tpo.models.Enums.TipoDeporte;
 import com.uade.tpo.models.Enums.TipoNivelDeJuego;
-import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 
 public class UsuarioDTO {
@@ -16,10 +14,8 @@ public class UsuarioDTO {
     private final TipoNivelDeJuego nivelJuego;
     private final TipoDeporte deporteFavorito;
     private final Zona ubicacion;
-    private final IEmparejamiento metodoEmparejamiento;
 
-    public UsuarioDTO(String nombre, String apellido, String correo, String contraseña, char sexo,
-                      String dni, TipoNivelDeJuego nivelJuego, TipoDeporte deporteFavorito, Zona ubicacion, IEmparejamiento emparejamiento) {
+    public UsuarioDTO(String nombre, String apellido, String correo, String contraseña, char sexo, String dni, TipoNivelDeJuego nivelJuego, TipoDeporte deporteFavorito, Zona ubicacion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
@@ -29,7 +25,6 @@ public class UsuarioDTO {
         this.nivelJuego = nivelJuego;
         this.deporteFavorito = deporteFavorito;
         this.ubicacion = ubicacion;
-        this.metodoEmparejamiento = emparejamiento;
     }
 
     public String getNombre() {
@@ -76,19 +71,4 @@ public class UsuarioDTO {
         return ubicacion;
     }
 
-
-    public Usuario toUsuario() {
-        return new Usuario(
-                this.nombre,
-                this.apellido,
-                this.sexo,
-                this.dni,
-                this.correo,
-                this.contraseña,
-                this.deporteFavorito,
-                this.nivelJuego,
-                this.ubicacion,
-                this.metodoEmparejamiento
-        );
-    }
 }
