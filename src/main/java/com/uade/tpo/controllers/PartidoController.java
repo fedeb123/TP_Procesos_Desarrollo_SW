@@ -26,7 +26,7 @@ public class PartidoController {
     }
 
     private PartidoController() {
-        super();
+        this.partidos = new ArrayList<>();
     }
 
     //public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte);
