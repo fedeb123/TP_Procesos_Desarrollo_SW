@@ -1,26 +1,10 @@
 package com.uade.tpo.Restriccion;
-
-import com.uade.tpo.Models.Enums;
-
-
+import com.uade.tpo.Models.Usuario;
 public class PorNivel implements IRestriccion {
-    private Enums.TipoNivelDeJuego nivelRequerido;
-
-    public PorNivel(Enums.TipoNivelDeJuego nivelRequerido) {
-        this.nivelRequerido = nivelRequerido;
-    }
-
-    public Enums.TipoNivelDeJuego getNivelRequerido() {
-        return nivelRequerido;
-    }
-
-    public void setNivelRequerido(Enums.TipoNivelDeJuego nivelRequerido) {
-        this.nivelRequerido = nivelRequerido;
-    }
-
+    private final int nivelMin;
+    public PorNivel(int nivelMin) { this.nivelMin = nivelMin; }
     @Override
-    public boolean cumple() {
-        return false;
+    public boolean aplica(Usuario usuario) {
+        return usuario.getNivel() >= nivelMin;
     }
-
 }

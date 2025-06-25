@@ -1,12 +1,8 @@
 package com.uade.tpo.Services;
-
-import com.uade.tpo.Models.DTO.UsuarioDTO;
 import com.uade.tpo.Models.Usuario;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.Optional;
 public interface IUsuarioService {
-    ArrayList<Usuario> getUsuarios();
-    Usuario crearUsuario(UsuarioDTO usuario);
+    Usuario crearUsuario(String nombre, String email);
+    Optional<Usuario> buscarPorId(Long id);
+    void actualizarNivel(Long id, int nuevoNivel);
 }

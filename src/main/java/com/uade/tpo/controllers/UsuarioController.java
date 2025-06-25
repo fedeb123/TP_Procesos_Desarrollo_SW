@@ -1,9 +1,9 @@
 package com.uade.tpo.controllers;
 
-import com.uade.tpo.Models.DTO.UsuarioDTO;
+import com.uade.tpo.DTO.UsuarioDTO;
 import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Services.IUsuarioService;
-import com.uade.tpo.Services.UsuarioService;
+import com.uade.tpo.Services.impl.UsuarioService;
 
 public class UsuarioController {
 

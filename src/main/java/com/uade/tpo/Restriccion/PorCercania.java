@@ -1,22 +1,20 @@
 package com.uade.tpo.Restriccion;
-
+import com.uade.tpo.Models.Usuario;
+import com.uade.tpo.Models.Zona;
 public class PorCercania implements IRestriccion {
-    private int radioKm;
-
-    public PorCercania(int radioKm) {
-        this.radioKm = radioKm;
+    private final Zona zona;
+    private final double distanciaMax;
+    public PorCercania(Zona zona, double distanciaMax) {
+        this.zona = zona;
+        this.distanciaMax = distanciaMax;
     }
-
-    public int getRadioKm() {
-        return radioKm;
-    }
-
-    public void setRadioKm(int radioKm) {
-        this.radioKm = radioKm;
-    }
-
     @Override
-    public boolean cumple() {
-        return false;
+    public boolean aplica(Usuario usuario) {
+        double latU = usuario.getUbicacion().getLatitud();
+        double lonU = usuario.getUbicacion().getLongitud();
+        double latZ = zona.getCentro().getLatitud();
+        double lonZ = zona.getCentro().getLongitud();
+        double dist = Math.hypot(latU - latZ, lonU - lonZ);
+        return dist <= distanciaMax;
     }
 }

@@ -8,8 +8,8 @@ import com.uade.tpo.Models.Usuario;
 import com.uade.tpo.Models.Zona;
 import com.uade.tpo.Restriccion.PorNivel;
 import com.uade.tpo.Services.NotificacionService;
-import com.uade.tpo.Services.PartidoService;
-import com.uade.tpo.Services.UsuarioService;
+import com.uade.tpo.Services.impl.PartidoService;
+import com.uade.tpo.Services.impl.UsuarioService;
 import com.uade.tpo.storage.StorageAdapter;
 import com.uade.tpo.storage.fake.FakeSQL;
 

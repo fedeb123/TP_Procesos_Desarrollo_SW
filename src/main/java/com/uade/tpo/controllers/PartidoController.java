@@ -1,32 +1,20 @@
 package com.uade.tpo.controllers;
-
-import com.uade.tpo.Models.DTO.PartidoDTO;
-import com.uade.tpo.Models.Enums;
-import com.uade.tpo.Models.Partido;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Models.Zona;
+import com.uade.tpo.DTO.PartidoDTO;
+import com.uade.tpo.DTO.UsuarioDTO;
 import com.uade.tpo.Services.IPartidoService;
-
 import java.util.List;
 
 public class PartidoController {
-
-    private final IPartidoService partidoService;
-
-    public PartidoController(IPartidoService partidoService) {
-        this.partidoService = partidoService;
+    private final IPartidoService service;
+    public PartidoController(IPartidoService svc){ this.service = svc; }
+    public PartidoDTO crear(Long zonaId) {
+        return service.crearPartido(zonaId);
     }
-
-    public void crearPartido(PartidoDTO partido) {
-        partidoService.crearPartido(partido);
-        System.out.println("Partido creado");
+    public List<UsuarioDTO> agregarYEmparejar(Long partidoId, UsuarioDTO u,
+            List<Long> restricciones, Long empId) {
+        return service.agregarYEmparejar(partidoId, u, restricciones, empId);
     }
-
-    public void agregarJugador(Partido partido, Usuario usuario) {
-        partidoService.agregarJugador(partido, usuario);
+    public PartidoDTO iniciar(Long partidoId, List<Long> restricciones, Long empId) {
+        return service.iniciarPartido(partidoId, restricciones, empId);
     }
-
-   public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte){
-        return partidoService.buscarPartido(zona,tipoDeporte);
-   }
 }
