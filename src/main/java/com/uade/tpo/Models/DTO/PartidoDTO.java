@@ -15,7 +15,7 @@ public class PartidoDTO {
     private final IEmparejamiento metodoEmparejamiento;
     private final int cantidadJugadoresRequerida;
     private final float duracionEncuentro;
-    private Enums.TipoNivelDeJuego maximoNivel;
+    private final Enums.TipoNivelDeJuego maximoNivel;
 
     public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
 

@@ -20,7 +20,7 @@ public class Partido extends NotificadorObservable {
     private Usuario organizadorPartido;
     private ArrayList<Usuario> jugadores;
     private IEmparejamiento metodoEmparejamiento;
-    private Enums.TipoNivelDeJuego maximoNivel;
+    private final Enums.TipoNivelDeJuego maximoNivel;
 
     public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
         this.jugadores = new ArrayList<>();
