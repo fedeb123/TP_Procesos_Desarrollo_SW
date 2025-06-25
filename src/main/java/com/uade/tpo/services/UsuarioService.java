@@ -2,8 +2,8 @@ package com.uade.tpo.services;
 
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.dto.UsuarioDTO;
+import com.uade.tpo.repositories.UsuarioRepository;
 import com.uade.tpo.services.interfaces.IUsuarioService;
-import com.uade.tpo.storage.Storage;
 
 public class UsuarioService implements IUsuarioService {
     
@@ -22,7 +22,7 @@ public class UsuarioService implements IUsuarioService {
 
         Usuario nuevoUsuario = new Usuario(usuario.getNombre(), usuario.getApellido(), usuario.getSexo(), usuario.getDni(), usuario.getCorreo(), usuario.getContraseña(), usuario.getDeporteFavorito(), usuario.getNivelJuego(), usuario.getUbicacion());
         
-        Storage.getInstance().guardarUsuario(nuevoUsuario);
+        UsuarioRepository.getInstance().guardarUsuario(nuevoUsuario);
 
         System.out.println("Usuario creado");
         

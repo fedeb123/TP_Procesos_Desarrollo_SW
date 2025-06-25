@@ -8,8 +8,8 @@ import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.models.dto.UsuarioDTO;
+import com.uade.tpo.repositories.PartidoRepository;
 import com.uade.tpo.services.PartidoService;
-import com.uade.tpo.storage.Storage;
 
 public class PartidoController {
 
@@ -30,7 +30,7 @@ public class PartidoController {
     //public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte);
 
     public ArrayList<PartidoDTO> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
-        ArrayList<Partido> partidosCoincidentes = Storage.getInstance().buscarPartidos(zona, tipoDeporte);
+        ArrayList<Partido> partidosCoincidentes = PartidoRepository.getInstance().buscarPartidos(zona, tipoDeporte);
         ArrayList<PartidoDTO> partidosDTO = new ArrayList<>();
         
         for (Partido partido : partidosCoincidentes){
@@ -41,7 +41,7 @@ public class PartidoController {
     }
 
     public PartidoDTO buscarPartido(String direccion, Date fecha){
-        Partido partidoCoincidente = Storage.getInstance().buscarPartido(direccion, fecha);
+        Partido partidoCoincidente = PartidoRepository.getInstance().buscarPartido(direccion, fecha);
         return partidoCoincidente.toDTO();
     }
 

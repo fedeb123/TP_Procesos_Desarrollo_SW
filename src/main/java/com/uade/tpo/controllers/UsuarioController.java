@@ -6,8 +6,8 @@ import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.UsuarioDTO;
+import com.uade.tpo.repositories.UsuarioRepository;
 import com.uade.tpo.services.UsuarioService;
-import com.uade.tpo.storage.Storage;
 
 public class UsuarioController {
 
@@ -30,12 +30,12 @@ public class UsuarioController {
     }
 
     public UsuarioDTO buscarUsuario(String dni){
-        Usuario usuarioEncontrado = Storage.getInstance().buscarUsuario(dni);
+        Usuario usuarioEncontrado = UsuarioRepository.getInstance().buscarUsuario(dni);
         return usuarioEncontrado.toDTO();
     }
 
     public ArrayList<UsuarioDTO> buscarUsuariosCoincidentes(Zona ubicacion, Enums.TipoDeporte deporte){
-        ArrayList<Usuario> usuariosCoincidentes = Storage.getInstance().buscarUsuariosCoincidentes(ubicacion, deporte);
+        ArrayList<Usuario> usuariosCoincidentes = UsuarioRepository.getInstance().buscarUsuariosCoincidentes(ubicacion, deporte);
         ArrayList<UsuarioDTO> usuariosDTO = new ArrayList<>();
 
         for (Usuario usuario : usuariosCoincidentes){

@@ -1,23 +1,24 @@
 package com.uade.tpo.emparejamiento;
 
+import java.util.ArrayList;
+
 import com.uade.tpo.controllers.PartidoController;
 import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.dto.PartidoDTO;
 
 public class PorHistorial implements IEmparejamiento {
 
-    PartidoController partidoController = PartidoController.getInstance();
-
-    public PorHistorial() {
-        // logica de emparejamiento por historial
+    public PorHistorial(int cantidadMinima) {
+        if ()
     }
 
     @Override
     public boolean puedeUnirse(Usuario usuario, Partido partido) {
         Usuario organizador = partido.getOrganizadorPartido();
 
-        var historial = this.partidoController.getHistorial(usuario);
+        ArrayList<PartidoDTO> historial = PartidoController.getInstance().getHistorialPartidos(usuario.toDTO());
 
-        return historial.stream().anyMatch(p -> p.getOrganizadorPartido().equals(organizador));
+        return (int) historial.stream().filter(p -> p.getOrganizadorPartido().equals(organizador.toDTO())).count();
     }
 }
