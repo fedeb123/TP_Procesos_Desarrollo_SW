@@ -45,12 +45,15 @@ public class PartidoService implements IPartidoService {
         nuevoPartido.setDuracionEncuentro(duracionEncuentro);
 
         ArrayList<Usuario> usuariosANotificar = Storage.getInstance().buscarUsuariosCoincidentes(partido.getUbicacion(), partido.getTipoDeporte());
-
-        for (Usuario usuario : usuariosANotificar){
-            usuario.update(); 
-        }
+        usuariosANotificar.remove(usuarioCreador);
 
         nuevoPartido.agregarObservador(usuarioCreador);
+
+        for (Usuario usuario : usuariosANotificar){
+            usuario.update("Se creo un nuevo partido de: " + nuevoPartido.getTipoDeporte().toString() + "en tu zona: " + nuevoPartido.getUbicacion().toString()); 
+        }
+
+        usuarioCreador.update("Partido Creado con Exito!");
 
         Storage.getInstance().guardarPartido(nuevoPartido);
 

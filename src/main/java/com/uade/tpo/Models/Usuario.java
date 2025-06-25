@@ -100,7 +100,7 @@ public class Usuario implements INotificadorObserver {
     }
 
     @Override
-    public void update(){
+    public void update(String notificacion){
         //hacer algo
     }
     

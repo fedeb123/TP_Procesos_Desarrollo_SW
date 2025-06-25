@@ -20,9 +20,9 @@ public class NotificadorObservable implements INotificadorObservable {
     }
 
     @Override
-    public void notificar(String mensaje){
+    public void notificar(String notificacion){
         for (INotificadorObserver observer : this.listaObservadores){
-            observer.update();
+            observer.update(notificacion);
         }
     }
 }
