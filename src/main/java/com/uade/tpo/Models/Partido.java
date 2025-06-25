@@ -8,7 +8,6 @@ import com.uade.tpo.estadopartido.IEstadoPartido;
 import com.uade.tpo.estadopartido.NecesitaJugadores;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.observer.NotificadorObservable;
-import com.uade.tpo.restriccion.IRestriccion;
 
 public class Partido extends NotificadorObservable {
     private Enums.TipoDeporte tipoDeporte;
@@ -20,13 +19,11 @@ public class Partido extends NotificadorObservable {
     private String direccion;
     private Usuario organizadorPartido;
     private ArrayList<Usuario> jugadores;
-    private ArrayList<IRestriccion> restricciones;
     private IEmparejamiento metodoEmparejamiento;
     private Enums.TipoNivelDeJuego maximoNivel;
 
-    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
+    public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
         this.jugadores = new ArrayList<>();
-        this.restricciones = restricciones;
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
         this.horario = horario;
@@ -141,14 +138,6 @@ public class Partido extends NotificadorObservable {
         this.jugadores = jugadores;
     }
 
-    public ArrayList<IRestriccion> getRestricciones() {
-        return restricciones;
-    }
-
-    public void setRestricciones(ArrayList<IRestriccion> restricciones) {
-        this.restricciones = restricciones;
-    }
-
     public IEmparejamiento getMetodoEmparejamiento() {
         return metodoEmparejamiento;
     }
@@ -158,7 +147,7 @@ public class Partido extends NotificadorObservable {
     }
 
     public PartidoDTO toDTO(){
-        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido.toDTO(), this.restricciones, this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.maximoNivel);
+        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido.toDTO(), this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.maximoNivel);
     }
 
 

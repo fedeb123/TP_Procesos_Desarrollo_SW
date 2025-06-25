@@ -40,7 +40,7 @@ public class PartidoService implements IPartidoService {
 
         //validar si el usuario no existe
 
-        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador,partido.getRestricciones(), partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMaximoNivel());
+        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador, partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMaximoNivel());
 
         nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
         nuevoPartido.setDuracionEncuentro(duracionEncuentro);

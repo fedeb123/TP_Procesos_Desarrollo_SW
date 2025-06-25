@@ -1,7 +1,6 @@
 package com.uade.tpo;
 
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import com.uade.tpo.controllers.PartidoController;
@@ -32,7 +31,7 @@ public class App
         usuarioController.crearUsuario(jugador);
 
         // Creo partido
-        PartidoDTO partidoNuevo = new PartidoDTO(Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"), new Date(), "Av. Siempre Viva 123", organizador, new ArrayList<>(), null, 11, 90.0f, Enums.TipoNivelDeJuego.INTERMEDIO);
+        PartidoDTO partidoNuevo = new PartidoDTO(Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"), new Date(), "Av. Siempre Viva 123", organizador, null, 11, 90.0f, Enums.TipoNivelDeJuego.INTERMEDIO);
         partidoController.crearPartido(partidoNuevo);
         partidoController.agregarJugador(partidoNuevo, jugador);      
 
