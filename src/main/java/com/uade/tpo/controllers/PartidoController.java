@@ -1,6 +1,7 @@
 package com.uade.tpo.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.PartidoDTO;
+import com.uade.tpo.models.dto.UsuarioDTO;
 
 public class PartidoController {
 
@@ -29,13 +31,15 @@ public class PartidoController {
 
     //public List<Partido> buscarPartidosIncompletos(Zona zona, Enums.TipoDeporte tipoDeporte);
 
-    public List<Partido> buscarPartido(Zona zona, Enums.TipoDeporte tipoDeporte) {
+    public List<Partido> buscarPartidos(Zona zona, Enums.TipoDeporte tipoDeporte) {
         return this.partidos.stream().filter(p -> p.getUbicacion().equals(zona) && p.getTipoDeporte() == tipoDeporte && Objects.equals(p.getEstado().toString(), Enums.TipoEstadoPartido.NECESITA_JUGADORES.toString())).toList();
     }
 
-    public void crearPartido(PartidoDTO partido) {
+    public Partido buscarPartido(String direccion, Date fecha){
+        return this.partidos.stream().filter(p -> p.getDireccion().equals(direccion) && p.getHorario().equals(fecha)).findFirst().orElse(null);
+    }
 
-        UsuarioController usuarioController = UsuarioController.getInstance();
+    public void crearPartido(PartidoDTO partido) {
 
         // validar cosas aca, me da fiaca
 
@@ -43,21 +47,34 @@ public class PartidoController {
         int cantidadJugadoresRequerida = 0;
         float duracionEncuentro = 0;
 
-        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), partido.getOrganizadorPartido(), partido.getRestricciones(), partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMaximoNivel());
+        // buscar si existe el organizador del partido
+        // devolver el modelo si existe, sino fallar
+        // crear el nuevo partido
+
+        var usuarioCreador = UsuarioController.getInstance().buscarUsuario(partido.getOrganizadorPartido().getDni());
+
+        //validar si el usuario no existe
+
+        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador,partido.getRestricciones(), partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMaximoNivel());
 
         nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
         nuevoPartido.setDuracionEncuentro(duracionEncuentro);
 
-        var usuarios = usuarioController.getUsuarios();
+        var usuarios = UsuarioController.getInstance().getUsuarios();
 
         this.partidos.add(nuevoPartido);
     }
 
-    public void agregarJugador(Partido partido, Usuario usuario) {
-        partido.agregarJugador(usuario);
+    public void agregarJugador(PartidoDTO partido, UsuarioDTO usuario) {
+        Partido partidoEncontrado = this.buscarPartido(partido.getDireccion(), partido.getHorario());
+        Usuario usuarioEncontrado = UsuarioController.getInstance().buscarUsuario(usuario.getDni());
 
-        if (Objects.equals(partido.getEstado().toString(), Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString())) {
-            partido.notificar("Partido armado");
+        //poner validaciones si el partido o el usuario son null
+
+        partidoEncontrado.agregarJugador(usuarioEncontrado);
+
+        if (Objects.equals(partidoEncontrado.getEstado().toString(), Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString())) {
+            partidoEncontrado.notificar("Partido armado");
         }
     }
 
