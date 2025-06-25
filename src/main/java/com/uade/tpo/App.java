@@ -1,15 +1,19 @@
 package com.uade.tpo;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.uade.tpo.controllers.PartidoController;
 import com.uade.tpo.controllers.UsuarioController;
 import com.uade.tpo.emparejamiento.PorNivelMinimo;
+import com.uade.tpo.jobs.PartidoJob;
 import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.models.dto.UsuarioDTO;
+
+
 
 
 public class App
@@ -17,9 +21,11 @@ public class App
     public static void main( String[] args )
     {
         // Instanciar dependencias
-
+        var partidoJob = new PartidoJob();
         var usuarioController = UsuarioController.getInstance();
         var partidoController = PartidoController.getInstance();
+
+        partidoJob.start();
 
         // Creo 2 usuarios
         UsuarioDTO organizador = new UsuarioDTO("Juan", "Pérez", "abc@gmail.com", "12345678", 'M', "1234", Enums.TipoNivelDeJuego.INTERMEDIO, Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"));    
@@ -49,8 +55,18 @@ public class App
         usuarioController.crearUsuario(user9);
         usuarioController.crearUsuario(user10);
 
+        //Creo una fecha
+        Date fecha = new Date();
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            fecha = sdf.parse("25/06/2025 20:46");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         // Creo partido
-        PartidoDTO partidoNuevo = new PartidoDTO(Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"), new Date(), "Av. Siempre Viva 123", organizador, new PorNivelMinimo(), 2, 90.0f, Enums.TipoNivelDeJuego.PRINCIPIANTE);
+        PartidoDTO partidoNuevo = new PartidoDTO(Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"), fecha ,"Av. Siempre Viva 123", organizador, new PorNivelMinimo(), 2, 90.0f, Enums.TipoNivelDeJuego.PRINCIPIANTE);
         partidoController.crearPartido(partidoNuevo);
 
         // Agrego Jugadores al partido creado
