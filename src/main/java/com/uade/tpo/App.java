@@ -1,65 +1,34 @@
 package com.uade.tpo;
 
 
-import com.uade.tpo.Emparejamiento.PorNivelMaximo;
-import com.uade.tpo.Models.Enums;
-import com.uade.tpo.Models.Partido;
-import com.uade.tpo.Models.Usuario;
-import com.uade.tpo.Models.Zona;
-import com.uade.tpo.Restriccion.PorNivel;
-import com.uade.tpo.Services.NotificacionService;
-import com.uade.tpo.Services.PartidoService;
-import com.uade.tpo.Services.UsuarioService;
-import com.uade.tpo.storage.StorageAdapter;
-import com.uade.tpo.storage.fake.FakeSQL;
+import com.uade.tpo.controllers.PartidoController;
+import com.uade.tpo.controllers.UsuarioController;
+import com.uade.tpo.models.Enums;
+import com.uade.tpo.models.Zona;
+import com.uade.tpo.models.dto.UsuarioDTO;
 
-import java.util.ArrayList;
-import java.util.Date;
 
 public class App
 {
     public static void main( String[] args )
     {
         // Instanciar dependencias
-        var fakeSQL = FakeSQL.getInstance();
-        var storage = new StorageAdapter(fakeSQL);
-        var notificacionService = new NotificacionService();
-        var usuarioService = new UsuarioService(storage);
-        var partidoService = new PartidoService(storage, notificacionService, usuarioService);
+
+        var usuarioController = UsuarioController.getInstance();
+        var partidoController = PartidoController.getInstance();
 
         // Creo 2 usuarios
-        Usuario organizador = new Usuario(
-                "Juan", "Pérez", 'M', "12345678", "juan@mail.com", "1234",
-                Enums.TipoDeporte.FUTBOL, Enums.TipoNivelDeJuego.INTERMEDIO,
-                new Zona("Buenos Aires", "CABA"), new PorNivelMaximo()
-        );
+        UsuarioDTO organizador = new UsuarioDTO("Juan", "Pérez", "abc@gmail.com", "12345678", 'M', "1234", Enums.TipoNivelDeJuego.INTERMEDIO, Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"));
 
-        Usuario jugador = new Usuario(
-                "Pedro", "Gómez", 'M', "87654321", "pedro@mail.com", "5678",
-                Enums.TipoDeporte.FUTBOL, Enums.TipoNivelDeJuego.PRINCIPIANTE,
-                new Zona("Buenos Aires", "CABA"), new PorNivelMaximo()
-        );
+        UsuarioDTO jugador = new UsuarioDTO("Pedro", "Gómez", "pedro@mail.com", "5678", 'M', "87654321", Enums.TipoNivelDeJuego.PRINCIPIANTE, Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"));
 
 
         // Agrego usuarios
-        storage.crearUsuario(organizador);
-        storage.crearUsuario(jugador);
-
+        usuarioController.crearUsuario(organizador);
+        usuarioController.crearUsuario(jugador);
 
         // Creo partido
-        Partido partido = new Partido(
-                Enums.TipoDeporte.FUTBOL,
-                new Zona("Buenos Aires", "CABA"),
-                new Date(),
-                "Av. Siempreviva 742",
-                organizador,
-                new ArrayList<>(), // restricciones
-                new PorNivelMaximo(),
-                2, // cantidadJugadoresRequerida
-                90f,
-                notificacionService,
-                Enums.TipoNivelDeJuego.AVANZADO
-        );
+        
 
 
         System.out.println("nice");
