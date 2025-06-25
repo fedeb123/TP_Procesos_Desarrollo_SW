@@ -1,15 +1,15 @@
 package com.uade.tpo.services;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-import com.uade.tpo.controllers.PartidoController;
-import com.uade.tpo.controllers.UsuarioController;
 import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.services.interfaces.IPartidoService;
+import com.uade.tpo.storage.Storage;
 
 public class PartidoService implements IPartidoService {
 
@@ -35,7 +35,7 @@ public class PartidoService implements IPartidoService {
         // devolver el modelo si existe, sino fallar
         // crear el nuevo partido
 
-        var usuarioCreador = UsuarioController.getInstance().buscarUsuario(partido.getOrganizadorPartido().getDni());
+        var usuarioCreador = Storage.getInstance().buscarUsuario(partido.getOrganizadorPartido().getDni());
 
         //validar si el usuario no existe
 
@@ -44,14 +44,23 @@ public class PartidoService implements IPartidoService {
         nuevoPartido.setCantidadJugadoresRequerida(cantidadJugadoresRequerida);
         nuevoPartido.setDuracionEncuentro(duracionEncuentro);
 
-        return nuevoPartido;
+        ArrayList<Usuario> usuariosANotificar = Storage.getInstance().buscarUsuariosCoincidentes(partido.getUbicacion(), partido.getTipoDeporte());
 
+        for (Usuario usuario : usuariosANotificar){
+            usuario.update(); 
+        }
+
+        nuevoPartido.agregarObservador(usuarioCreador);
+
+        Storage.getInstance().guardarPartido(nuevoPartido);
+
+        return nuevoPartido;
     }
 
     @Override
     public void agregarJugador(PartidoDTO partido, UsuarioDTO usuario) {
-        Partido partidoEncontrado = PartidoController.getInstance().buscarPartido(partido.getDireccion(), partido.getHorario());
-        Usuario usuarioEncontrado = UsuarioController.getInstance().buscarUsuario(usuario.getDni());
+        Partido partidoEncontrado = Storage.getInstance().buscarPartido(partido.getDireccion(), partido.getHorario());
+        Usuario usuarioEncontrado = Storage.getInstance().buscarUsuario(usuario.getDni());
 
         //poner validaciones si el partido o el usuario son null
 
@@ -60,5 +69,22 @@ public class PartidoService implements IPartidoService {
         if (Objects.equals(partidoEncontrado.getEstado().toString(), Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString())) {
             partidoEncontrado.notificar("Partido armado");
         }
-    }        
+    }
+    
+    public ArrayList<PartidoDTO> getHistorialPartidos(UsuarioDTO usuario){
+        ArrayList<Partido> partidos = Storage.getInstance().getPartidos(); 
+
+        var usuarioEncontrado = Storage.getInstance().buscarUsuario(usuario.getDni());
+
+        //validar si el usuario existe
+
+        partidos.stream().filter(p -> p.getJugadores().contains(usuarioEncontrado));
+
+        ArrayList<PartidoDTO> partidosDTO = new ArrayList<>();
+        for (Partido partido : partidos){
+            partidosDTO.add(partido.toDTO());
+        }
+
+        return partidosDTO;
+    }
 }

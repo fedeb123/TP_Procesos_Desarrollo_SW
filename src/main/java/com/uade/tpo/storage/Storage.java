@@ -49,6 +49,12 @@ public class Storage {
         usuarios.add(usuario);
     }
 
-    
-    
+    public ArrayList<Partido> getPartidos(){
+        return this.partidos;
+    }
+
+    public ArrayList<Usuario> getUsuarios(){
+        return this.usuarios;
+    }
+
 }

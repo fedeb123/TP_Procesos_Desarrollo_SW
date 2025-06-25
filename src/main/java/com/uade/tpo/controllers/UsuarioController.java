@@ -7,15 +7,14 @@ import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.services.UsuarioService;
+import com.uade.tpo.storage.Storage;
 
 public class UsuarioController {
-
-    private final ArrayList<Usuario> usuarios;
 
     private static UsuarioController instance;
 
     private UsuarioController() {
-        this.usuarios = new ArrayList<>();
+        super();
     }
 
     public static UsuarioController getInstance() {
@@ -27,19 +26,22 @@ public class UsuarioController {
 
     public void crearUsuario(UsuarioDTO usuario) {
         Usuario nuevoUsuario = UsuarioService.getInstance().crearUsuario(usuario);
-        usuarios.add(nuevoUsuario);
     }
 
-    protected ArrayList<Usuario> getUsuarios() {
-        return usuarios;
+    public UsuarioDTO buscarUsuario(String dni){
+        Usuario usuarioEncontrado = Storage.getInstance().buscarUsuario(dni);
+        return usuarioEncontrado.toDTO();
     }
 
-    protected Usuario buscarUsuario(String dni){
-        return this.usuarios.stream().filter(u -> u.getDni().contains(dni)).findFirst().orElse(null);
-    }
+    public ArrayList<UsuarioDTO> buscarUsuariosCoincidentes(Zona ubicacion, Enums.TipoDeporte deporte){
+        ArrayList<Usuario> usuariosCoincidentes = Storage.getInstance().buscarUsuariosCoincidentes(ubicacion, deporte);
+        ArrayList<UsuarioDTO> usuariosDTO = new ArrayList<>();
 
-    protected ArrayList<Usuario> buscarUsuariosCoincidentes(Zona ubicacion, Enums.TipoDeporte deporte){
-        return new ArrayList<>(this.usuarios.stream().filter(u -> u.getUbicacion().equals(ubicacion) && u.getDeporteFav().equals(deporte)).toList());
+        for (Usuario usuario : usuariosCoincidentes){
+            usuariosDTO.add(usuario.toDTO());
+        }
+
+        return usuariosDTO;
     }
      
 }

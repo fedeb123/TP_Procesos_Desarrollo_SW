@@ -1,14 +1,10 @@
 package com.uade.tpo.controllers;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 
 import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Partido;
-import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.models.dto.UsuarioDTO;
@@ -57,9 +53,9 @@ public class PartidoController {
         //validar si salio bien
     }
 
-    public ArrayList<PartidoDTO> getHistorialPartidos(Usuario usuarioDTO){
-        
-        return this.partidos.stream().filter(p -> p.getJugadores().contains(usuario)).toList();
+    public ArrayList<PartidoDTO> getHistorialPartidos(UsuarioDTO usuarioDTO){
+        ArrayList<PartidoDTO> partidosDTO = PartidoService.getInstance().getHistorialPartidos(usuarioDTO);
+        return partidosDTO;
     }
 }
 
