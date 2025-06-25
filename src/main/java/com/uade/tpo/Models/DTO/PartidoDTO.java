@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.uade.tpo.emparejamiento.IEmparejamiento;
 import com.uade.tpo.models.Enums;
-import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.Zona;
 import com.uade.tpo.restriccion.IRestriccion;
 
@@ -14,14 +13,14 @@ public class PartidoDTO {
     private final Zona ubicacion;
     private final Date horario;
     private final String direccion;
-    private final Usuario organizadorPartido;
+    private final UsuarioDTO organizadorPartido;
     private final ArrayList<IRestriccion> restricciones;
     private final IEmparejamiento metodoEmparejamiento;
     private final int cantidadJugadoresRequerida;
     private final float duracionEncuentro;
     private Enums.TipoNivelDeJuego maximoNivel;
 
-    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
+    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, ArrayList<IRestriccion> restricciones, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego maximoNivel) {
 
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
@@ -55,7 +54,7 @@ public class PartidoDTO {
     }
 
 
-    public Usuario getOrganizadorPartido() {
+    public UsuarioDTO getOrganizadorPartido() {
         return organizadorPartido;
     }
 
