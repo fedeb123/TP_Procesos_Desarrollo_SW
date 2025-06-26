@@ -1,9 +1,7 @@
 package com.uade.tpo.services;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.dto.PartidoDTO;
@@ -66,10 +64,6 @@ public class PartidoService implements IPartidoService {
         //poner validaciones si el partido o el usuario son null
 
         partidoEncontrado.agregarJugador(usuarioEncontrado);
-
-        if (Objects.equals(partidoEncontrado.getEstado().toString(), Enums.TipoEstadoPartido.PARTIDO_ARMADO.toString())) {
-            partidoEncontrado.notificar("Partido armado");
-        }
     }
     
     public ArrayList<Partido> getHistorialPartidos(UsuarioDTO usuario){
