@@ -82,5 +82,8 @@ public class PartidoController {
         }
         return partidosDTO;
     }
-}
 
+    public void cancelarPartido(PartidoDTO partido) {
+        this.partidoService.cancelarPartido(partido);
+    }
+}

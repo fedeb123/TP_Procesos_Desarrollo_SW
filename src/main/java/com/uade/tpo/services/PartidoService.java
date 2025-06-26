@@ -87,4 +87,10 @@ public class PartidoService implements IPartidoService {
 
         partidoEncontrado.comentarPartido(comentarioModel); 
     }
+
+    public void cancelarPartido(PartidoDTO partido) {
+        Partido partidoEncontrado = PartidoRepository.getInstance().buscarPartido(partido.getDireccion(), partido.getHorario());
+        partidoEncontrado.cancelar();
+    }
+
 }
