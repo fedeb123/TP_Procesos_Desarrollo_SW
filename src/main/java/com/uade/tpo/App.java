@@ -59,14 +59,14 @@ public class App
         Date fecha = new Date();
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-            fecha = sdf.parse("25/06/2025 20:46");
+            fecha = sdf.parse("26/06/2025 01:47");
             
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         // Creo partido
-        PartidoDTO partidoNuevo = new PartidoDTO(Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"), fecha ,"Av. Siempre Viva 123", organizador, new PorNivelMinimo(), 2, 90.0f, Enums.TipoNivelDeJuego.PRINCIPIANTE);
+        PartidoDTO partidoNuevo = new PartidoDTO(Enums.TipoDeporte.FUTBOL, new Zona("Buenos Aires", "CABA"), fecha ,"Av. Siempre Viva 123", organizador, new PorNivelMinimo(), 2, 1, Enums.TipoNivelDeJuego.PRINCIPIANTE);
         partidoController.crearPartido(partidoNuevo);
 
         // Agrego Jugadores al partido creado

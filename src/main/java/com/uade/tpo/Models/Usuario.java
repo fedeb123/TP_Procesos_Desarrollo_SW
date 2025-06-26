@@ -2,6 +2,7 @@ package com.uade.tpo.models;
 
 import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.observer.INotificadorObserver;
+import com.uade.tpo.services.NotificacionService;
 
 public class Usuario implements INotificadorObserver {
 
@@ -101,7 +102,8 @@ public class Usuario implements INotificadorObserver {
 
     @Override
     public void update(String notificacion){
-        System.out.printf("Usuario: %s ha recibido la notificacion: %s %n", this.nombre, notificacion);
+        NotificacionService.getInstance().enviarNotificacion(notificacion, this);
+    //    System.out.printf("Usuario: %s ha recibido la notificacion: %s %n", this.nombre, notificacion);
     }
     
     public UsuarioDTO toDTO(){
