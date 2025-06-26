@@ -23,13 +23,13 @@ public class Registro extends JFrame {
     private final JTextField dniField = new JTextField(10);
     private final JComboBox<TipoNivelDeJuego> nivelCombo = new JComboBox<>(TipoNivelDeJuego.values());
     private final JComboBox<TipoDeporte> deporteCombo = new JComboBox<>(TipoDeporte.values());
-    private final JTextField provinciaField = new JTextField(5);
-    private final JTextField municipioField = new JTextField(5);
+    private final JTextField provinciaField = new JTextField(10);
+    private final JTextField municipioField = new JTextField(10);
     
 
     public Registro() {
         setTitle("Registro de Usuario");
-        setSize(400, 500);
+        setSize(400, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
@@ -71,6 +71,8 @@ public class Registro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 registrarUsuario();
+                setVisible(false);
+                new Menu().setVisible(true);
             }
         });
 
@@ -79,7 +81,6 @@ public class Registro extends JFrame {
             dispose();
         });
 
-        panel.add(new JLabel()); // espacio vacío
         panel.add(registrarBtn);
         panel.add(volverBtn);
         add(panel);
