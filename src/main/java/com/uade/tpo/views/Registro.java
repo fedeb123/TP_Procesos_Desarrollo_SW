@@ -2,9 +2,11 @@ package com.uade.tpo.views;
 
 import javax.print.MultiDocPrintService;
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import com.uade.tpo.controllers.UsuarioController;
 import com.uade.tpo.models.Enums.TipoDeporte;
@@ -103,7 +105,7 @@ public class Registro extends JFrame {
             // Por simplicidad, se crea una Zona dummy. En implementación real, se debe buscar por ID.
             ZonaDTO zona = new ZonaDTO(provincia, municipio);
 
-            UsuarioDTO nuevoUsuario = new UsuarioDTO(nombre, apellido, correo, contraseña, sexo, dni, nivel, deporte, zona);
+            UsuarioDTO nuevoUsuario = new UsuarioDTO(nombre, apellido, correo, contraseña, sexo, dni, nivel, deporte, zona, new ArrayList<>());
             UsuarioController.getInstance().crearUsuario(nuevoUsuario);
 
             JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente");

@@ -7,6 +7,7 @@ import com.uade.tpo.emparejamiento.IEmparejamiento;
 import com.uade.tpo.estadopartido.IEstadoPartido;
 import com.uade.tpo.estadopartido.NecesitaJugadores;
 import com.uade.tpo.models.dto.PartidoDTO;
+import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.observer.NotificadorObservable;
 
 public class Partido extends NotificadorObservable {
@@ -22,6 +23,7 @@ public class Partido extends NotificadorObservable {
     private ArrayList<Usuario> jugadoresConfirmados;
     private IEmparejamiento metodoEmparejamiento;
     private final Enums.TipoNivelDeJuego MinimoNivel;
+    private final ArrayList<Comentario> comentarios;
 
     public Partido(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, Usuario organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel) {
         this.jugadores = new ArrayList<>();
@@ -36,6 +38,7 @@ public class Partido extends NotificadorObservable {
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
         this.duracionEncuentro = duracionEncuentro;
         this.MinimoNivel = MinimoNivel;
+        this.comentarios = new ArrayList<>();
     }
 
     public void agregarJugador(Usuario usuario) {
@@ -53,6 +56,10 @@ public class Partido extends NotificadorObservable {
 
     public void cancelar() {
         this.estado.cancelar(this);
+    }
+
+    public void comentarPartido(Comentario comentario) {
+        this.estado.comentarPartido(comentario, this);
     }
 
     public void cambiarEstado(IEstadoPartido nuevoEstado) {
@@ -157,8 +164,15 @@ public class Partido extends NotificadorObservable {
     }
 
     public PartidoDTO toDTO(){
-        return new PartidoDTO(this.tipoDeporte, this.ubicacion.toDTO(), this.horario, this.direccion, this.organizadorPartido.toDTO(), this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.MinimoNivel);
+        ArrayList<UsuarioDTO> jugadoresDTO = new ArrayList<>();
+        for (Usuario jugador : this.getJugadores()){
+            jugadoresDTO.add(jugador.toDTO());
+        }
+        return new PartidoDTO(this.tipoDeporte, this.ubicacion.toDTO(), this.horario, this.direccion, this.organizadorPartido.toDTO(), this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.MinimoNivel, jugadoresDTO);
     }
 
+    public ArrayList<Comentario> getComentarios(){
+        return this.comentarios;
+    }
 
 }

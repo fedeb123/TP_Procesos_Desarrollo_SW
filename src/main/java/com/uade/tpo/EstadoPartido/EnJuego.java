@@ -3,6 +3,7 @@ package com.uade.tpo.estadopartido;
 import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Comentario;
 
 
 public class EnJuego implements IEstadoPartido {
@@ -39,6 +40,11 @@ public class EnJuego implements IEstadoPartido {
     @Override
     public void cancelar(Partido partido) {
         System.out.println("No se puede cancelar un partido que ya está en juego.");
+    }
+
+    @Override
+    public void comentarPartido(Comentario comentario, Partido partido){
+        System.out.println("No se puede comentar un partido no finalizado");
     }
 
     @Override

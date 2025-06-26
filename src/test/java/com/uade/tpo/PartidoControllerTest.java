@@ -49,15 +49,15 @@ class FlujoCompletoPartidoTest {
 
         UsuarioDTO organizador = new UsuarioDTO("Juan", "Pérez", "abc@gmail.com", "12345678", 'M',
                 "1234", Enums.TipoNivelDeJuego.INTERMEDIO, Enums.TipoDeporte.FUTBOL,
-                new Zona("Buenos Aires", "CABA").toDTO());
+                new Zona("Buenos Aires", "CABA").toDTO(), new ArrayList<>());
 
         UsuarioDTO jugador = new UsuarioDTO("Pedro", "Gómez", "pedro@mail.com", "5678", 'M',
                 "87654321", Enums.TipoNivelDeJuego.PRINCIPIANTE, Enums.TipoDeporte.FUTBOL,
-                new Zona("Buenos Aires", "CABA").toDTO());
+                new Zona("Buenos Aires", "CABA").toDTO(), new ArrayList<>());
 
         UsuarioDTO user2 = new UsuarioDTO("Carlos", "González", "carlos.gonzalez@mail.com", "pass456", 'M',
                 "2222", Enums.TipoNivelDeJuego.INTERMEDIO, Enums.TipoDeporte.FUTBOL,
-                new Zona("Rosario", "Santa Fe").toDTO());
+                new Zona("Rosario", "Santa Fe").toDTO(), new ArrayList<>());
 
         usuarioController.crearUsuario(organizador);
         usuarioController.crearUsuario(jugador);
@@ -74,7 +74,8 @@ class FlujoCompletoPartidoTest {
                 new PorNivelMinimo(),
                 2,
                 1,
-                Enums.TipoNivelDeJuego.PRINCIPIANTE);
+                Enums.TipoNivelDeJuego.PRINCIPIANTE,
+                new ArrayList<>());
 
         partidoController.crearPartido(partidoNuevo);
 

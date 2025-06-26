@@ -7,6 +7,8 @@ import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.models.dto.UsuarioDTO;
+import com.uade.tpo.models.dto.ComentarioDTO;
+import com.uade.tpo.models.Comentario;
 import com.uade.tpo.repositories.PartidoRepository;
 import com.uade.tpo.repositories.UsuarioRepository;
 import com.uade.tpo.services.interfaces.IPartidoService;
@@ -24,11 +26,6 @@ public class PartidoService implements IPartidoService {
 
     @Override
     public Partido crearPartido(PartidoDTO partido) {
-
-        // validar cosas aca, me da fiaca
-        // buscar si existe el organizador del partido
-        // devolver el modelo si existe, sino fallar
-        // crear el nuevo partido
 
         var usuarioCreador = UsuarioRepository.getInstance().buscarUsuario(partido.getOrganizadorPartido().getDni());
         //validar si el usuario no existe
@@ -62,8 +59,6 @@ public class PartidoService implements IPartidoService {
         Partido partidoEncontrado = PartidoRepository.getInstance().buscarPartido(partido.getDireccion(), partido.getHorario());
         Usuario usuarioEncontrado = UsuarioRepository.getInstance().buscarUsuario(usuario.getDni());
 
-        //poner validaciones si el partido o el usuario son null
-
         partidoEncontrado.agregarJugador(usuarioEncontrado);
     }
     
@@ -71,8 +66,6 @@ public class PartidoService implements IPartidoService {
         ArrayList<Partido> partidos = PartidoRepository.getInstance().getPartidos(); 
 
         var usuarioEncontrado = UsuarioRepository.getInstance().buscarUsuario(usuario.getDni());
-
-        //validar si el usuario existe
 
         partidos.stream().filter(p -> p.getJugadores().contains(usuarioEncontrado));
 
@@ -84,5 +77,14 @@ public class PartidoService implements IPartidoService {
         var usuarioEncontrado = UsuarioRepository.getInstance().buscarUsuario(usuario.getDni());
 
         partidoEncontrado.confirmarJugador(usuarioEncontrado);
+    }
+
+    public void comentarPartido(ComentarioDTO comentario, PartidoDTO partido){
+        var partidoEncontrado = PartidoRepository.getInstance().buscarPartido(partido.getDireccion(), partido.getHorario());
+        var usuarioEncontrado = UsuarioRepository.getInstance().buscarUsuario(comentario.getAutor().getDni());
+
+        Comentario comentarioModel = new Comentario (comentario.getComentario(), usuarioEncontrado);
+
+        partidoEncontrado.comentarPartido(comentarioModel); 
     }
 }

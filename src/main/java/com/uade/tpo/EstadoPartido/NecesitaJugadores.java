@@ -3,6 +3,8 @@ package com.uade.tpo.estadopartido;
 import com.uade.tpo.models.Enums;
 import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Comentario;
+
 
 
 public class NecesitaJugadores implements IEstadoPartido {
@@ -57,6 +59,11 @@ public class NecesitaJugadores implements IEstadoPartido {
         }
 
         System.out.println("Partido cancelado.");
+    }
+
+    @Override
+    public void comentarPartido(Comentario comentario, Partido partido){
+        System.out.println("No se puede comentar un partido no finalizado");
     }
 
     @Override

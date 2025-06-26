@@ -18,11 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.uade.tpo.controllers.PartidoController;
-import com.uade.tpo.models.Partido;
-import com.uade.tpo.models.Usuario;
-import com.uade.tpo.models.dto.UsuarioDTO;
-import com.uade.tpo.repositories.PartidoRepository;
-import com.uade.tpo.repositories.UsuarioRepository;
+import com.uade.tpo.controllers.UsuarioController;
+import com.uade.tpo.models.dto.*;
+
 
 public class VerNotificaciones extends JFrame {
 
@@ -30,7 +28,7 @@ public class VerNotificaciones extends JFrame {
 
     public VerNotificaciones(UsuarioDTO usuarioDTO) {
         setTitle("Notificaciones de " + usuarioDTO.getNombre());
-        setSize(400, 500);
+        setSize(400, 600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -38,7 +36,7 @@ public class VerNotificaciones extends JFrame {
         panelNotificaciones.setLayout(new BoxLayout(panelNotificaciones, BoxLayout.Y_AXIS));
         JScrollPane scrollPane = new JScrollPane(panelNotificaciones);
 
-        Usuario usuario = UsuarioRepository.getInstance().buscarUsuario(usuarioDTO.getDni());
+        UsuarioDTO usuario = UsuarioController.getInstance().buscarUsuario(usuarioDTO.getDni());
         for (String notificacion : usuario.getNotificaciones()) {
             JPanel notiPanel = new JPanel();
             notiPanel.setLayout(new BoxLayout(notiPanel, BoxLayout.Y_AXIS));
@@ -60,10 +58,20 @@ public class VerNotificaciones extends JFrame {
 
                 confirmarBtn.addActionListener(e -> {
                     // Buscar el partido correspondiente (simplificado)
-                    List<Partido> partidos = PartidoRepository.getInstance().getPartidos();
-                    for (Partido partido : partidos) {
-                        if (partido.getJugadores().contains(usuario)) {
-                            PartidoController.getInstance().confirmarPartipacion(partido.toDTO(), usuarioDTO);
+                    ArrayList<PartidoDTO> partidos = PartidoController.getInstance().getAllPartidos();
+                    for (PartidoDTO partido : partidos) {
+                        // Comparar por DNI en lugar de usar contains
+                        boolean usuarioEnPartido = false;
+                        for (UsuarioDTO jugador : partido.getJugadores()) {
+                            if (jugador.getDni().equals(usuario.getDni())) {
+                                usuarioEnPartido = true;
+                                break;
+                            }
+                        }
+                        
+                        if (usuarioEnPartido) {
+                            System.out.println("Confirmado");
+                            PartidoController.getInstance().confirmarPartipacion(partido, usuarioDTO);
                             JOptionPane.showMessageDialog(this, "Confirmación realizada con éxito.");
 
                             confirmarBtn.setEnabled(false);
@@ -75,12 +83,36 @@ public class VerNotificaciones extends JFrame {
                 notiPanel.add(Box.createRigidArea(new Dimension(0, 8)));
                 notiPanel.add(confirmarBtn);
             }
+            // if (notificacion.contains("El partido ha finalizado. No se pueden confirmar jugadores.")) {
+            //     JButton comentarioBtn = new JButton("Comentar partido");
+            //     comentarioBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+            //     comentarioBtn.setBackground(new Color(0, 123, 255));
+            //     comentarioBtn.setForeground(Color.WHITE);
+
+            //     comentarioBtn.addActionListener(e -> {
+            //     List<Partido> partidos = PartidoRepository.getInstance().getPartidos();
+            //     for (Partido partido : partidos) {
+            //         if (partido.getJugadores().contains(usuario)) {
+            //             new ComentarioPartido(partido.toDTO(), usuarioDTO).setVisible(true);
+            //             break;
+            //         }
+            //     }
+            //   });
+
+            //     notiPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+            //     notiPanel.add(comentarioBtn);
+            // }
 
             panelNotificaciones.add(Box.createRigidArea(new Dimension(0, 10)));
             panelNotificaciones.add(notiPanel);
         }
 
         add(scrollPane, BorderLayout.CENTER);
+        JButton volverBtn = new JButton("Volver");
+        volverBtn.addActionListener(e -> {
+            //new Home(usuarioLogueado).setVisible(true);
+            dispose();
+        });
     }
 
     public static void agregarNotificacionGlobal(String mensaje) {

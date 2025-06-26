@@ -50,7 +50,7 @@ public class CrearPartido extends JFrame {
         JLabel deporteLabel = new JLabel("Deporte:");
         JComboBox<Enums.TipoDeporte> deporteCombo = new JComboBox<>(Enums.TipoDeporte.values());
 
-        JLabel duracionLabel = new JLabel("Duración (horas):");
+        JLabel duracionLabel = new JLabel("Duración (minutos):");
         JTextField duracionField = new JTextField();
 
         JLabel cantidadLabel = new JLabel("Cantidad de Jugadores:");
@@ -110,7 +110,7 @@ public class CrearPartido extends JFrame {
                         new PorCercania(),
                         Integer.parseInt(cantidadJugadoresField.getText()),
                         Float.parseFloat(duracionField.getText()),
-                        usuarioLogueado.getNivelJuego()
+                        usuarioLogueado.getNivelJuego(),null
                     );
                     break;
                 }
@@ -128,7 +128,7 @@ public class CrearPartido extends JFrame {
                         new PorHistorial(Integer.parseInt(parametroField.getText())),  // Asumimos que acepta un int
                         Integer.parseInt(cantidadJugadoresField.getText()),
                         Float.parseFloat(duracionField.getText()),
-                        usuarioLogueado.getNivelJuego()
+                        usuarioLogueado.getNivelJuego(),null
                     );
                     break;
                 }
@@ -146,7 +146,7 @@ public class CrearPartido extends JFrame {
                         new PorNivelMinimo(),
                         Integer.parseInt(cantidadJugadoresField.getText()),
                         Float.parseFloat(duracionField.getText()),
-                        usuarioLogueado.getNivelJuego()
+                        usuarioLogueado.getNivelJuego(),null
                     );
                     break;
                 }

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import com.uade.tpo.jobs.PartidoJob;
+
 public class Menu extends JFrame {
 
     public Menu() {
@@ -43,5 +45,7 @@ public class Menu extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Menu().setVisible(true));
+        PartidoJob partidoJob = new PartidoJob();
+        partidoJob.start();
     }
 }

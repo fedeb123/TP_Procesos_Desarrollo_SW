@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
 
 import com.uade.tpo.controllers.PartidoController;
 import com.uade.tpo.models.Enums;
-import com.uade.tpo.models.Zona;
+import com.uade.tpo.models.dto.ZonaDTO;
 import com.uade.tpo.models.dto.PartidoDTO;
 import com.uade.tpo.models.dto.UsuarioDTO;
 
@@ -64,7 +64,7 @@ public class BuscarPartido extends JFrame {
     //System.out.println("Zona buscada: " + usuarioLogueado.getUbicacion().getProvincia() + ", " + usuarioLogueado.getUbicacion().getMunicipio());
 
     Enums.TipoDeporte deporte = (Enums.TipoDeporte) deporteCombo.getSelectedItem();
-    Zona zona = new Zona(
+    ZonaDTO zona = new ZonaDTO(
         usuarioLogueado.getUbicacion().getProvincia(),
         usuarioLogueado.getUbicacion().getMunicipio()
     );

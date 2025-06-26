@@ -1,6 +1,6 @@
 package com.uade.tpo.models.dto;
 
-import java.util.Date;
+import java.util.*;
 
 import com.uade.tpo.emparejamiento.IEmparejamiento;
 import com.uade.tpo.models.Enums;
@@ -15,8 +15,9 @@ public class PartidoDTO {
     private final int cantidadJugadoresRequerida;
     private final float duracionEncuentro;
     private final Enums.TipoNivelDeJuego MinimoNivel;
+    private final ArrayList<UsuarioDTO> jugadores;
 
-    public PartidoDTO(Enums.TipoDeporte tipoDeporte, ZonaDTO ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel) {
+    public PartidoDTO(Enums.TipoDeporte tipoDeporte, ZonaDTO ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel, ArrayList<UsuarioDTO> jugadores) {
 
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
@@ -27,46 +28,52 @@ public class PartidoDTO {
         this.cantidadJugadoresRequerida = cantidadJugadoresRequerida;
         this.duracionEncuentro = duracionEncuentro;
         this.MinimoNivel = MinimoNivel;
+        this.jugadores = jugadores;
     }
 
     public Enums.TipoDeporte getTipoDeporte() {
-        return tipoDeporte;
+        return this.tipoDeporte;
     }
 
 
     public ZonaDTO getUbicacion() {
-        return ubicacion;
+        return this.ubicacion;
     }
 
 
     public Date getHorario() {
-        return horario;
+        return this.horario;
     }
 
 
     public String getDireccion() {
-        return direccion;
+        return this.direccion;
     }
 
 
     public UsuarioDTO getOrganizadorPartido() {
-        return organizadorPartido;
+        return this.organizadorPartido;
     }
 
     public IEmparejamiento getMetodoEmparejamiento() {
-        return metodoEmparejamiento;
+        return this.metodoEmparejamiento;
     }
 
     public int getCantidadJugadoresRequerida() {
-        return cantidadJugadoresRequerida;
+        return this.cantidadJugadoresRequerida;
     }
 
     public float getDuracionEncuentro() {
-        return duracionEncuentro;
+        return this.duracionEncuentro;
     }
 
     public Enums.TipoNivelDeJuego getMinimoNivel() {
-        return MinimoNivel;
+        return this.MinimoNivel;
     }
+
+    public ArrayList<UsuarioDTO> getJugadores() {
+        return this.jugadores;
+    }
+
 
 }
