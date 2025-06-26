@@ -25,7 +25,7 @@ class Home extends JFrame {
 
         btnCrear.addActionListener(e -> new CrearPartido(usuarioLogueado).setVisible(true));
         btnBuscar.addActionListener(e -> new BuscarPartido(usuarioLogueado).setVisible(true));
-        btnNotificaciones.addActionListener(e -> new VerNotificaciones(null).setVisible(true));
+        btnNotificaciones.addActionListener(e -> new VerNotificaciones(usuarioLogueado).setVisible(true));
         btnCerrarSesion.addActionListener(e -> {
             new Menu().setVisible(true);
             dispose();

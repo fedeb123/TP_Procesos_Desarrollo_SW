@@ -1,8 +1,11 @@
 package com.uade.tpo.models;
 
+import java.util.ArrayList;
+
 import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.observer.INotificadorObserver;
 import com.uade.tpo.services.NotificacionService;
+import com.uade.tpo.views.VerNotificaciones;
 
 public class Usuario implements INotificadorObserver {
 
@@ -15,6 +18,7 @@ public class Usuario implements INotificadorObserver {
     private Enums.TipoDeporte deporteFav;
     private Enums.TipoNivelDeJuego nivelJuego;
     private Zona ubicacion;
+    private ArrayList<String> notificaciones = new ArrayList<>();
 
     public Usuario(String nombre, String apellido, char sexo, String dni, String correo, String contraseña, Enums.TipoDeporte deporteFav, Enums.TipoNivelDeJuego nivelJuego, Zona ubicacion) {
         this.nombre = nombre;
@@ -104,11 +108,19 @@ public class Usuario implements INotificadorObserver {
     public void update(String notificacion){
         NotificacionService.getInstance().enviarNotificacion(notificacion, this);
     //    System.out.printf("Usuario: %s ha recibido la notificacion: %s %n", this.nombre, notificacion);
+        System.out.printf("Usuario: %s ha recibido la notificacion: %s %n", this.nombre, notificacion);
+        notificaciones.add(notificacion);
+        //VerNotificaciones.agregarNotificacionGlobal(notificacion);
     }
     
     public UsuarioDTO toDTO(){
         return new UsuarioDTO(this.nombre, this.apellido, this.correo, this.contraseña, this.sexo, this.dni, this.nivelJuego, this.deporteFav, this.ubicacion.toDTO());
     }
+
+    public ArrayList<String> getNotificaciones() {
+    return new ArrayList<>(notificaciones);
+}
+    
 
 }
 
