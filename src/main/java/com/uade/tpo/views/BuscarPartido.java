@@ -54,7 +54,7 @@ public class BuscarPartido extends JFrame {
 
         JButton volverBtn = new JButton("Volver");
         volverBtn.addActionListener(e -> {
-            new Home(usuarioLogueado).setVisible(true);
+            //new Home(usuarioLogueado).setVisible(true);
             dispose();
         });
 

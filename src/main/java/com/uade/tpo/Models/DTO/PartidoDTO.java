@@ -4,11 +4,10 @@ import java.util.Date;
 
 import com.uade.tpo.emparejamiento.IEmparejamiento;
 import com.uade.tpo.models.Enums;
-import com.uade.tpo.models.Zona;
 
 public class PartidoDTO {
     private final Enums.TipoDeporte tipoDeporte;
-    private final Zona ubicacion;
+    private final ZonaDTO ubicacion;
     private final Date horario;
     private final String direccion;
     private final UsuarioDTO organizadorPartido;
@@ -17,7 +16,7 @@ public class PartidoDTO {
     private final float duracionEncuentro;
     private final Enums.TipoNivelDeJuego MinimoNivel;
 
-    public PartidoDTO(Enums.TipoDeporte tipoDeporte, Zona ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel) {
+    public PartidoDTO(Enums.TipoDeporte tipoDeporte, ZonaDTO ubicacion, Date horario, String direccion, UsuarioDTO organizadorPartido, IEmparejamiento metodoEmparejamiento, int cantidadJugadoresRequerida, float duracionEncuentro, Enums.TipoNivelDeJuego MinimoNivel) {
 
         this.tipoDeporte = tipoDeporte;
         this.ubicacion = ubicacion;
@@ -35,7 +34,7 @@ public class PartidoDTO {
     }
 
 
-    public Zona getUbicacion() {
+    public ZonaDTO getUbicacion() {
         return ubicacion;
     }
 

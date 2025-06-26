@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.observer.INotificadorObserver;
 import com.uade.tpo.services.NotificacionService;
-import com.uade.tpo.views.VerNotificaciones;
+
 
 public class Usuario implements INotificadorObserver {
 

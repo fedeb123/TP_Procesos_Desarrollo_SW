@@ -31,10 +31,9 @@ public class PartidoService implements IPartidoService {
         // crear el nuevo partido
 
         var usuarioCreador = UsuarioRepository.getInstance().buscarUsuario(partido.getOrganizadorPartido().getDni());
-
         //validar si el usuario no existe
 
-        var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador, partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMinimoNivel());
+        var nuevoPartido = new Partido(partido.getTipoDeporte(), usuarioCreador.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador, partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMinimoNivel());
         nuevoPartido.setEstado(new NecesitaJugadores()); 
 
         nuevoPartido.setCantidadJugadoresRequerida(partido.getCantidadJugadoresRequerida());

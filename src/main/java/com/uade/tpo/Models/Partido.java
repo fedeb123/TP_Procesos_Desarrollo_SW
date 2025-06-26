@@ -157,7 +157,7 @@ public class Partido extends NotificadorObservable {
     }
 
     public PartidoDTO toDTO(){
-        return new PartidoDTO(this.tipoDeporte, this.ubicacion, this.horario, this.direccion, this.organizadorPartido.toDTO(), this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.MinimoNivel);
+        return new PartidoDTO(this.tipoDeporte, this.ubicacion.toDTO(), this.horario, this.direccion, this.organizadorPartido.toDTO(), this.metodoEmparejamiento, this.cantidadJugadoresRequerida, this.duracionEncuentro, this.MinimoNivel);
     }
 
 

@@ -25,4 +25,11 @@ public class Enums {
         TENIS,
         VOLEIBOL
     }
+
+    public enum TipoEmparejamiento {
+        POR_CERCANIA,
+        POR_HISTORIAL,
+        POR_NIVEL_MINIMO
+    }
+
 }

@@ -21,6 +21,11 @@ public class Armado implements IEstadoPartido {
             return;
         }
 
+        if (!partido.getJugadores().contains(usuario)){
+            System.err.printf("El jugador: %s no puede confirmar un partido del cual no forma parte %n", usuario.getNombre());
+            return;
+        }
+
         if (cantidadConfirmada < cantidadActual) {
             partido.getJugadoresConfirmados().add(usuario);
             cantidadConfirmada = partido.getJugadoresConfirmados().size();
