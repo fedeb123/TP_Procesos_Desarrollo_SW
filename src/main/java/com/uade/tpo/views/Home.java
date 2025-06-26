@@ -23,9 +23,9 @@ class Home extends JFrame {
         JButton btnNotificaciones = new JButton("Ver Notificaciones");
         JButton btnCerrarSesion = new JButton("Cerrar Sesión");
 
-        btnCrear.addActionListener(e -> new CrearPartido(usuario).setVisible(true));
-        //btnBuscar.addActionListener(e -> new BuscarPartido().setVisible(true));
-        //btnNotificaciones.addActionListener(e -> new NotificacionTexto().setVisible(true));
+        btnCrear.addActionListener(e -> new CrearPartido(usuarioLogueado).setVisible(true));
+        btnBuscar.addActionListener(e -> new BuscarPartido(usuarioLogueado).setVisible(true));
+        btnNotificaciones.addActionListener(e -> new VerNotificaciones(null).setVisible(true));
         btnCerrarSesion.addActionListener(e -> {
             new Registro().setVisible(true);
             dispose();
