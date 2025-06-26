@@ -19,7 +19,8 @@ import javax.swing.JScrollPane;
 
 import com.uade.tpo.controllers.PartidoController;
 import com.uade.tpo.controllers.UsuarioController;
-import com.uade.tpo.models.dto.*;
+import com.uade.tpo.models.dto.PartidoDTO;
+import com.uade.tpo.models.dto.UsuarioDTO;
 
 
 public class VerNotificaciones extends JFrame {
@@ -83,25 +84,25 @@ public class VerNotificaciones extends JFrame {
                 notiPanel.add(Box.createRigidArea(new Dimension(0, 8)));
                 notiPanel.add(confirmarBtn);
             }
-            // if (notificacion.contains("El partido ha finalizado. No se pueden confirmar jugadores.")) {
-            //     JButton comentarioBtn = new JButton("Comentar partido");
-            //     comentarioBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-            //     comentarioBtn.setBackground(new Color(0, 123, 255));
-            //     comentarioBtn.setForeground(Color.WHITE);
+        if (notificacion.equals("Partido finalizado")){
+                JButton comentarioBtn = new JButton("Comentar partido");
+                comentarioBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+                comentarioBtn.setBackground(new Color(0, 123, 255));
+                comentarioBtn.setForeground(Color.WHITE);
 
-            //     comentarioBtn.addActionListener(e -> {
-            //     List<Partido> partidos = PartidoRepository.getInstance().getPartidos();
-            //     for (Partido partido : partidos) {
-            //         if (partido.getJugadores().contains(usuario)) {
-            //             new ComentarioPartido(partido.toDTO(), usuarioDTO).setVisible(true);
-            //             break;
-            //         }
-            //     }
-            //   });
+                comentarioBtn.addActionListener(e -> {
+                ArrayList<PartidoDTO> partidos = PartidoController.getInstance().getAllPartidos();
+                for (PartidoDTO partido : partidos) {
+                      if (usuarioDTO.getDni().equals(usuario.getDni())) {
+                        new ComentarioPartido(partido, usuarioDTO).setVisible(true);
+                        break;
+                    }
+                }
+              });
 
-            //     notiPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-            //     notiPanel.add(comentarioBtn);
-            // }
+                  notiPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+                  notiPanel.add(comentarioBtn);
+            }
 
             panelNotificaciones.add(Box.createRigidArea(new Dimension(0, 10)));
             panelNotificaciones.add(notiPanel);

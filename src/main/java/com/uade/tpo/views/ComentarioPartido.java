@@ -1,5 +1,8 @@
 package com.uade.tpo.views;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -9,9 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import java.awt.*;
+
 import com.uade.tpo.controllers.PartidoController;
-import com.uade.tpo.models.dto.*;
+import com.uade.tpo.models.dto.ComentarioDTO;
+import com.uade.tpo.models.dto.PartidoDTO;
+import com.uade.tpo.models.dto.UsuarioDTO;
 
 public class ComentarioPartido extends JFrame{
     public ComentarioPartido (PartidoDTO partido, UsuarioDTO usuario){
@@ -53,6 +58,7 @@ public class ComentarioPartido extends JFrame{
                 if (!texto.isEmpty()) {
                     PartidoController.getInstance().comentarPartido(new ComentarioDTO(texto,usuario), partido);
                     nuevoComentarioField.setText("");
+                    System.out.println("Se ha comentado: "+texto);
                 } else {
                     JOptionPane.showMessageDialog(ComentarioPartido.this, "El comentario no puede estar vacío.");
                 }
