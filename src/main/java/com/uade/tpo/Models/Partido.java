@@ -39,6 +39,8 @@ public class Partido extends NotificadorObservable {
         this.duracionEncuentro = duracionEncuentro;
         this.MinimoNivel = MinimoNivel;
         this.comentarios = new ArrayList<>();
+
+        this.jugadores.add(organizadorPartido);
     }
 
     public void agregarJugador(Usuario usuario) {
