@@ -42,7 +42,7 @@ class InicioSesion extends JFrame {
             dispose();
         });
 
-        panel.add(new JLabel("Nombre de Usuario"));
+        panel.add(new JLabel("DNI del Usuario"));
         panel.add(dniField);
         panel.add(new JLabel("Contraseña"));
         panel.add(contraseñaField);
