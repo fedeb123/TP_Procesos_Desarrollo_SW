@@ -1,9 +1,18 @@
 package com.uade.tpo.views;
 
-import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import com.uade.tpo.controllers.PartidoController;
 import com.uade.tpo.models.Enums;
@@ -15,17 +24,31 @@ public class BuscarPartido extends JFrame {
 
     public BuscarPartido(UsuarioDTO usuarioLogueado) {
         setTitle("Buscar Partidos");
-        setSize(400, 300);
+        setSize(600, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
-        JPanel panel = new JPanel(new GridLayout(3, 2));
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
+        JLabel deporteLabel = new JLabel("Seleccione Deporte:");
         JComboBox<Enums.TipoDeporte> deporteCombo = new JComboBox<>(Enums.TipoDeporte.values());
-        JButton buscarBtn = new JButton("Buscar");
-        JTextArea resultadosArea = new JTextArea();
+        JButton buscarBtn = new JButton("Buscar Partidos");
+        buscarBtn.setBackground(new Color(0, 123, 255));
+        buscarBtn.setForeground(Color.WHITE);
+
+        JTextArea resultadosArea = new JTextArea(10, 40);
         resultadosArea.setEditable(false);
-        JScrollPane scroll = new JScrollPane(resultadosArea);
+        JScrollPane scrollPane = new JScrollPane(resultadosArea);
+
+        JButton volverBtn = new JButton("Volver");
+        volverBtn.addActionListener(e -> {
+            new Home(usuarioLogueado).setVisible(true);
+            dispose();
+        });
 
         buscarBtn.addActionListener(e -> {
             Enums.TipoDeporte deporte = (Enums.TipoDeporte) deporteCombo.getSelectedItem();
@@ -37,18 +60,29 @@ public class BuscarPartido extends JFrame {
 
             resultadosArea.setText("");
             if (partidos.isEmpty()) {
-                resultadosArea.setText("No se encontraron partidos.");
+                resultadosArea.setText("No se encontraron partidos para el deporte seleccionado en tu zona.");
             } else {
                 for (PartidoDTO p : partidos) {
-                    resultadosArea.append("Dirección: " + p.getDireccion() + "\nFecha: " + p.getHorario() + "\n\n");
+                    resultadosArea.append("Dirección: " + p.getDireccion() +
+                        "\nFecha y Hora: " + p.getHorario() +
+                        "\nOrganizador: " + p.getOrganizadorPartido().getNombre() +
+                        "\nJugadores requeridos: " + p.getCantidadJugadoresRequerida() +
+                        "\nDuración: " + p.getDuracionEncuentro() + " hs\n\n");
                 }
             }
         });
 
-        panel.add(new JLabel("Deporte:"));
-        panel.add(deporteCombo);
-        panel.add(buscarBtn);
-        panel.add(scroll);
+        gbc.gridx = 0; gbc.gridy = 0; panel.add(deporteLabel, gbc);
+        gbc.gridx = 1; gbc.gridy = 0; panel.add(deporteCombo, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 1; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(buscarBtn, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 2; gbc.fill = GridBagConstraints.BOTH;
+        panel.add(scrollPane, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 3; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(volverBtn, gbc);
 
         add(panel);
     }

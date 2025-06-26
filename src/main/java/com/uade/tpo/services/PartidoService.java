@@ -2,6 +2,7 @@ package com.uade.tpo.services;
 
 import java.util.ArrayList;
 
+import com.uade.tpo.estadopartido.NecesitaJugadores;
 import com.uade.tpo.models.Partido;
 import com.uade.tpo.models.Usuario;
 import com.uade.tpo.models.dto.PartidoDTO;
@@ -34,6 +35,7 @@ public class PartidoService implements IPartidoService {
         //validar si el usuario no existe
 
         var nuevoPartido = new Partido(partido.getTipoDeporte(), partido.getUbicacion(), partido.getHorario(), partido.getDireccion(), usuarioCreador, partido.getMetodoEmparejamiento(), partido.getCantidadJugadoresRequerida(), partido.getDuracionEncuentro(), partido.getMinimoNivel());
+        nuevoPartido.setEstado(new NecesitaJugadores()); 
 
         nuevoPartido.setCantidadJugadoresRequerida(partido.getCantidadJugadoresRequerida());
         nuevoPartido.setDuracionEncuentro(partido.getDuracionEncuentro());
