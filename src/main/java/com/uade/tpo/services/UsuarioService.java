@@ -1,34 +1,44 @@
 package com.uade.tpo.services;
 
 import com.uade.tpo.models.Usuario;
+import com.uade.tpo.models.Zona;
 import com.uade.tpo.models.dto.UsuarioDTO;
 import com.uade.tpo.repositories.UsuarioRepository;
-import com.uade.tpo.services.interfaces.IUsuarioService;
 
-public class UsuarioService implements IUsuarioService {
-    
+public class UsuarioService {
+
     private static UsuarioService instance;
 
-    public static UsuarioService getInstance(){
+    private UsuarioService() {}
+
+    public static UsuarioService getInstance() {
         if (instance == null) {
             instance = new UsuarioService();
         }
         return instance;
     }
 
-    @Override
-    public Usuario crearUsuario(UsuarioDTO usuario) {
-        // Validar cosas aca, me da fiaca ahora
+    public Usuario crearUsuario(UsuarioDTO usuarioDTO) {
+        Zona zona = new Zona(
+            usuarioDTO.getUbicacion().getProvincia(),
+            usuarioDTO.getUbicacion().getMunicipio()
+        );
 
-        Usuario nuevoUsuario = new Usuario(usuario.getNombre(), usuario.getApellido(), usuario.getSexo(), usuario.getDni(), usuario.getCorreo(), usuario.getContraseña(), usuario.getDeporteFavorito(), usuario.getNivelJuego(), usuario.getUbicacion());
-        
-        UsuarioRepository.getInstance().guardarUsuario(nuevoUsuario);
+        Usuario usuario = new Usuario(
+            usuarioDTO.getNombre(),
+            usuarioDTO.getApellido(),
+            usuarioDTO.getSexo(),
+            usuarioDTO.getDni(),
+            usuarioDTO.getCorreo(),
+            usuarioDTO.getContraseña(),
+            usuarioDTO.getDeporteFavorito(),
+            usuarioDTO.getNivelJuego(),
+            zona
+        );
 
-        System.out.println("Usuario creado");
-        
-        return nuevoUsuario;
-    }    
+        UsuarioRepository.getInstance().guardarUsuario(usuario);
 
-
-    
+        return usuario;
+    }
 }
+

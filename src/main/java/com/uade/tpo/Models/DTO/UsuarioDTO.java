@@ -2,7 +2,6 @@ package com.uade.tpo.models.dto;
 
 import com.uade.tpo.models.Enums.TipoDeporte;
 import com.uade.tpo.models.Enums.TipoNivelDeJuego;
-import com.uade.tpo.models.Zona;
 
 public class UsuarioDTO {
     private final String nombre;
@@ -13,9 +12,9 @@ public class UsuarioDTO {
     private final String dni;
     private final TipoNivelDeJuego nivelJuego;
     private final TipoDeporte deporteFavorito;
-    private final Zona ubicacion;
+    private final ZonaDTO ubicacion;
 
-    public UsuarioDTO(String nombre, String apellido, String correo, String contraseña, char sexo, String dni, TipoNivelDeJuego nivelJuego, TipoDeporte deporteFavorito, Zona ubicacion) {
+    public UsuarioDTO(String nombre, String apellido, String correo, String contraseña, char sexo, String dni, TipoNivelDeJuego nivelJuego, TipoDeporte deporteFavorito, ZonaDTO ubicacion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
@@ -31,44 +30,36 @@ public class UsuarioDTO {
         return nombre;
     }
 
-
     public String getApellido() {
         return apellido;
     }
-
 
     public String getCorreo() {
         return correo;
     }
 
-
     public String getContraseña() {
         return contraseña;
     }
-
 
     public char getSexo() {
         return sexo;
     }
 
-
     public String getDni() {
         return dni;
     }
-
 
     public TipoNivelDeJuego getNivelJuego() {
         return nivelJuego;
     }
 
-
     public TipoDeporte getDeporteFavorito() {
         return deporteFavorito;
     }
 
-
-    public Zona getUbicacion() {
+    public ZonaDTO getUbicacion() {
         return ubicacion;
     }
+} 
 
-}

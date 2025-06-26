@@ -105,7 +105,7 @@ public class Usuario implements INotificadorObserver {
     }
     
     public UsuarioDTO toDTO(){
-        return new UsuarioDTO(this.nombre, this.apellido, this.correo, this.contraseña, this.sexo, this.dni, this.nivelJuego, this.deporteFav, this.ubicacion);
+        return new UsuarioDTO(this.nombre, this.apellido, this.correo, this.contraseña, this.sexo, this.dni, this.nivelJuego, this.deporteFav, this.ubicacion.toDTO());
     }
 
 }

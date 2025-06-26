@@ -1,4 +1,5 @@
 package com.uade.tpo.models;
+import com.uade.tpo.models.dto.ZonaDTO;
 
 public class Zona {
     private String provincia;
@@ -24,5 +25,15 @@ public class Zona {
     public void setMunicipio(String municipio) {
         this.municipio = municipio;
     }
+
+    public ZonaDTO toDTO() {
+    return new ZonaDTO(this.provincia, this.municipio);
 }
+
+    public static Zona fromDTO(ZonaDTO dto) {
+        return new Zona(dto.getProvincia(), dto.getMunicipio());
+    }
+}
+
+
 
